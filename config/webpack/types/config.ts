@@ -4,7 +4,8 @@ export type Mode = 'development' | 'production'
 export type BuildPaths = {
     entry: string,
     dist: string,
-    html: string
+    html: string,
+    src: string
 }
 
 export type BuildOptions = {
