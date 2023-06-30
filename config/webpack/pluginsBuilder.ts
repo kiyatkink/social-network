@@ -7,6 +7,9 @@ export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPlu
     const { mode, paths, isDev} = options
     return [
         new webpack.ProgressPlugin(),
+        new webpack.DefinePlugin({
+            "process.env": JSON.stringify(process.env),
+        }),
         new HtmlWebpackPlugin({
             template: paths.html
         }),

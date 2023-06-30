@@ -5,7 +5,8 @@ export type BuildPaths = {
     entry: string,
     dist: string,
     html: string,
-    src: string
+    src: string,
+    env: string
 }
 
 export type BuildOptions = {
@@ -16,6 +17,5 @@ export type BuildOptions = {
 }
 
 export interface EnvBuildVariables {
-    PORT: number;
-    mode: Mode;
+    mode: 'dev' | 'prod'
 }
