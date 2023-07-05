@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
+    'plugin:i18next/recommended',
   ],
 
   parser: '@typescript-eslint/parser',
@@ -26,9 +27,12 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'react',
+    'i18next',
   ],
+
   rules: {
-    indent: ['error', 2, { ignoredNodes: ['JSXElement *', 'JSXElement'] }],
+    'quote-props': 'off',
+    'indent': ['error', 2, { ignoredNodes: ['JSXElement *', 'JSXElement'] }],
     'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
@@ -42,5 +46,7 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: ['function-declaration', 'function-expression', 'arrow-function'] }],
     'no-shadow': 'off',
     'react/button-has-type': 'off',
+    'semi': 'off',
   },
+
 };

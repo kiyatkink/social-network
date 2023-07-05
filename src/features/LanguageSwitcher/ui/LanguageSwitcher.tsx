@@ -9,14 +9,14 @@ interface LanguageSwitcherProps {
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
   const { className } = props;
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
   };
 
   return (
-    <AppButton theme={AppButtonThems.CLEAR} onClick={toggleLanguage} className={classNames('LanguageSwitcher', {}, [className])}>
+    <AppButton theme={AppButtonThems.CLEAR} onClick={toggleLanguage} className={classNames('', {}, [className])}>
       {t('Язык')}
     </AppButton>
   );
