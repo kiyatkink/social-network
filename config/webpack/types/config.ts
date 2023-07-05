@@ -1,4 +1,3 @@
-
 export type Mode = 'development' | 'production'
 
 export type BuildPaths = {
