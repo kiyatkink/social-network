@@ -1,26 +1,28 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { PageLoader } from 'widgets/PageLoader';
 import { routeConfig } from '../config/routerConfig';
 import cls from './AppRouter.module.scss';
 
 export function AppRouter() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        {Object.values(routeConfig)
+    <Routes>
+      {Object.values(routeConfig)
             .map(
                 ({ path, element }) => (
                   <Route
                     path={path}
+                    key={path}
                     element={(
-                      <div className={cls.wrapper}>
-                        { element }
-                      </div>
+                      <Suspense fallback={<PageLoader />}>
+                        <div className={cls.wrapper}>
+                          { element }
+                        </div>
+                      </Suspense>
                         )}
                   />
                 ),
             )}
-      </Routes>
-    </Suspense>
+    </Routes>
   );
 }
