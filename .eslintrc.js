@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -47,6 +48,7 @@ module.exports = {
     'no-shadow': 'off',
     'react/button-has-type': 'off',
     'semi': 'off',
+    'max-len': [1, { 'ignoreComments': true }],
   },
 
 };
