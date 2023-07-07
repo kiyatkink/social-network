@@ -3,7 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppButton.module.scss';
 
 export enum AppButtonThems {
-    CLEAR = 'clear'
+    CLEAR = 'clear',
+    INVERTED = 'inverted',
 }
 export interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className?: string
@@ -14,7 +15,10 @@ export const AppButton: FC<AppButtonProps> = (props) => {
     className, theme, children, ...otherProps
   } = props;
   return (
-    <button className={classNames(cls.AppButton, {}, [className, cls[theme]])} {...otherProps}>
+    <button
+      className={classNames(cls.AppButton, {}, [className, cls[theme]])}
+      {...otherProps}
+    >
       { children }
     </button>
   );
