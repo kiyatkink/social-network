@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPluginInstance> {
@@ -14,5 +15,8 @@ export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPlu
       template: paths.html,
     }),
     new MiniCssExtractPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }),
   ];
 }
