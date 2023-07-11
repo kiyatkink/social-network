@@ -10,6 +10,8 @@ declare module '*.png'
 declare module '*.jpg'
 declare module '*.jpeg'
 declare module '*.svg' {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     import React from 'react';
 
     const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;

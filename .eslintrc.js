@@ -15,7 +15,14 @@ module.exports = {
 
   parser: '@typescript-eslint/parser',
 
-  overrides: [],
+  overrides: [
+    {
+      'files': ['**/?(*.)+(spec|test).[tj]s?(x)'],
+      'rules': {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 
   parserOptions: {
     ecmaVersion: 'latest',
@@ -44,11 +51,12 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'react/function-component-definition': [2, { namedComponents: ['function-declaration', 'function-expression', 'arrow-function'] }],
+    'react/function-component-definition': [2,
+      { namedComponents: ['function-declaration', 'function-expression', 'arrow-function'] }],
     'no-shadow': 'off',
     'react/button-has-type': 'off',
     'semi': 'off',
-    'max-len': [1, { 'ignoreComments': true }],
+    'max-len': [1, { 'ignoreComments': true, 'code': 100 }],
   },
 
 };
