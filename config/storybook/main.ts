@@ -5,6 +5,7 @@ const config: StorybookConfig = {
   stories: [
     '../../src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  staticDirs: ['../../public'],
   webpackFinal: buildWebpackConfig,
   addons: [
     '@storybook/addon-links',

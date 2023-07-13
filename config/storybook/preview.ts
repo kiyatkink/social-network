@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/react';
 import { StylesDecorator } from './decorators/StylesDecorator';
 import { RouterDecorator } from './decorators/RouterDecorator';
 import { ThemeContextDecorator } from './decorators/ThemContextDecorator';
+import { TranslationDecorator } from './decorators/TranslationDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -28,9 +29,23 @@ const preview: Preview = {
         showName: true,
       },
     },
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      defaultValue: 'ru',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'ru', right: '🇷🇺', title: 'Russian' },
+          { value: 'en', right: '🇺🇸', title: 'English' },
+        ],
+        showName: true,
+      },
+    },
   },
   decorators: [
     StylesDecorator,
+    TranslationDecorator,
     ThemeContextDecorator,
     RouterDecorator,
   ],
