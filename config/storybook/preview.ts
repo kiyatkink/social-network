@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
-import { stylesDecorator } from './decorators/stylesDecorator';
-import { routerDecorator } from './decorators/routerDecorator';
+import { StylesDecorator } from './decorators/StylesDecorator';
+import { RouterDecorator } from './decorators/RouterDecorator';
+import { ThemeContextDecorator } from './decorators/ThemContextDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -29,8 +30,9 @@ const preview: Preview = {
     },
   },
   decorators: [
-    routerDecorator,
-    stylesDecorator,
+    StylesDecorator,
+    ThemeContextDecorator,
+    RouterDecorator,
   ],
 };
 

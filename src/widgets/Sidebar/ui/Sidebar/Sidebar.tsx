@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { ThemSwitcher } from 'features/ThemSwitcher';
-import { LanguageSwitcher } from 'features/LanguageSwitcher';
+import { LanguageSwitcher, LangSwitcherThems } from 'features/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import cls from './Sidebar.module.scss';
 
@@ -21,7 +21,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       <AppButton onClick={toggleCollapsed}>{t('Тогл')}</AppButton>
       <div className={cls.footer}>
         <ThemSwitcher className={cls.ThemSwitcher_size} />
-        <LanguageSwitcher className={cls.LangSwitcher_color} />
+        <LanguageSwitcher theme={LangSwitcherThems.INVERTED_PRIMARY} />
       </div>
     </div>
   );

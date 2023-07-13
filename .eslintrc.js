@@ -57,5 +57,6 @@ module.exports = {
       'code': 100,
     }],
     'no-param-reassign': [2, { 'ignorePropertyModificationsFor': ['config'] }],
+    'react/destructuring-assignment': 'off',
   },
 };
