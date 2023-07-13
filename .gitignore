@@ -1,5 +1,7 @@
 /node_modules
 /dist
 /.idea
+/.loki/current
+/.loki/difference
 .env.dev
 .env.prod
