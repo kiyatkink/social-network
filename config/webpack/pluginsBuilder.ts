@@ -6,7 +6,8 @@ import { BuildOptions } from './types/config';
 
 export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPluginInstance> {
   const { mode, paths, isDev } = options;
-  return [
+
+  const config: Array<webpack.WebpackPluginInstance> = [
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
@@ -15,8 +16,15 @@ export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPlu
       template: paths.html,
     }),
     new MiniCssExtractPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
-  ];
+  ]
+
+  if (isDev) {
+    config.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
+    )
+  }
+
+  return config;
 }
