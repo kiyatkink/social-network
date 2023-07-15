@@ -66,12 +66,14 @@
     "stylelint": "stylelint \"**/*.scss\"",
     "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "test": "jest --config ./config/jest/jest.config.ts",
-    "storybook": "storybook dev -p 6006 -c ./config/storybook",
+    "storybook": "storybook dev -p 6006 --no-open -c ./config/storybook",
     "build-storybook": "storybook build -c ./config/storybook",
     "loki:test": "loki test",
-    "loki:approve": "loki approve"
+    "loki:approve": "loki approve",
+    "storybook:loki:ci": "concurrently -s first -k \"yarn storybook\" \"yarn loki:test\""
   },
   "dependencies": {
+    "concurrently": "^8.2.0",
     "dotenv": "^16.3.1",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",

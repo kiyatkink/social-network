@@ -1,0 +1,53 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install 'Consolas' font
+        working-directory: ./public
+        run: |
+          mv fonts /usr/share/fonts/
+          fc-cache -f -v
+          fc-list | grep Consolas
+
+      - name: Create .env.prod file
+        run: |
+            touch .env.prod
+            echo MODE=${{ vars.MODE }} >> .env.prod
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build production project
+        run: yarn build:prod
+
+      - name: Check eslint problems
+        run: yarn eslint
+
+      - name: Check stylelint problems
+        run: yarn stylelint
+
+      - name: Run the tests
+        run: yarn test
+
+      - name: Run storybook and loki tests
+        run: yarn storybook:loki:ci

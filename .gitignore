@@ -3,5 +3,6 @@
 /.idea
 /.loki/current
 /.loki/difference
+/storybook-static
 .env.dev
 .env.prod
