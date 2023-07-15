@@ -1,5 +1,4 @@
 name: CI/CD
-
 on:
   push:
     branches: [ master ]
@@ -15,6 +14,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+          echo "::set-output name=version::$(yarn -v)"
 
       - name: Install 'Consolas' font
         working-directory: ./public
@@ -32,10 +37,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            **/.eslintcache
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+              ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build production project
         run: yarn build:prod
