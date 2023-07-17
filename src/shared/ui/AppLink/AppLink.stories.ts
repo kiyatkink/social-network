@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppLink, AppLinkTheme } from './AppLink';
+import { AppLink, AppLinkSizes, AppLinkTheme } from './AppLink';
 
 const meta: Meta<typeof AppLink> = {
   title: 'shared/AppLink',
@@ -35,5 +35,21 @@ export const InvertedSecondary: Story = {
   args: {
     children: 'Text',
     theme: AppLinkTheme.INVERTED_SECONDARY,
+  },
+};
+
+export const SizeL: Story = {
+  args: {
+    children: 'Text',
+    theme: AppLinkTheme.PRIMARY,
+    size: AppLinkSizes.L,
+  },
+};
+
+export const SizeXL: Story = {
+  args: {
+    children: 'Text',
+    theme: AppLinkTheme.PRIMARY,
+    size: AppLinkSizes.XL,
   },
 };

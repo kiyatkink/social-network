@@ -2,16 +2,32 @@
 
 .primary {
   color: var(--primary-color);
+  fill: var(--primary-color);
 }
 
 .secondary {
   color: var(--secondary-color);
+  fill: var(--secondary-color);
 }
 
 .inverted_primary {
   color: var(--inverted-primary-color);
+  fill: var(--inverted-primary-color);
 }
 
 .inverted_secondary {
   color: var(--inverted-secondary-color);
+  fill: var(--inverted-secondary-color);
+}
+
+.m {
+  font-size: var(--font-line-m);
+}
+
+.l {
+  font-size: var(--font-line-l);
+}
+
+.xl {
+  font-size: var(--font-line-xl);
 }

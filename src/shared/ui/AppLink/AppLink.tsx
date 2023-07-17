@@ -9,9 +9,16 @@ export enum AppLinkTheme {
     INVERTED_PRIMARY = 'inverted_primary',
     INVERTED_SECONDARY = 'inverted_secondary'
 }
+
+export enum AppLinkSizes {
+    M = 'm',
+    L = 'l',
+    XL = 'xl'
+}
 export interface AppLinkProps extends LinkProps{
     className?: string
-    theme?: AppLinkTheme
+    theme?: AppLinkTheme,
+    size?: AppLinkSizes
 }
 export const AppLink: FC<AppLinkProps> = (props) => {
   const {
@@ -19,11 +26,16 @@ export const AppLink: FC<AppLinkProps> = (props) => {
     theme = AppLinkTheme.PRIMARY,
     to,
     children,
+    size = AppLinkSizes.M,
     ...otherProps
   } = props;
 
   return (
-    <Link className={classNames(cls.Link, {}, [className, cls[theme]])} to={to} {...otherProps}>
+    <Link
+      className={classNames(cls.Link, {}, [className, cls[theme], cls[size]])}
+      to={to}
+      {...otherProps}
+    >
       { children }
     </Link>
   );

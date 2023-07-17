@@ -4,15 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './LanguageSwitcher.module.scss'
 
-export enum LangSwitcherThems {
-  INVERTED_PRIMARY = 'inverted_primary'
-}
 interface LanguageSwitcherProps {
     className?: string
-    theme?: LangSwitcherThems
+    collapsed?: boolean
 }
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
-  const { className, theme } = props;
+  const { className, collapsed } = props;
 
   const { t, i18n } = useTranslation()
 
@@ -22,11 +19,11 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
 
   return (
     <AppButton
-      theme={AppButtonThems.CLEAR}
+      theme={AppButtonThems.INVERTED}
       onClick={toggleLanguage}
-      className={classNames('LanguageSwitcher', {}, [className, cls[theme]])}
+      className={classNames(cls.LanguageSwitcher, {}, [className])}
     >
-      {t('Язык')}
+      { collapsed ? t('Короткий язык') : t('Язык')}
     </AppButton>
   );
 };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StoryFn } from '@storybook/react';
-import { LangSwitcherThems, LanguageSwitcher } from './LanguageSwitcher';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const meta: Meta<typeof LanguageSwitcher> = {
   title: 'features/LanguageSwitcher',
@@ -13,10 +13,28 @@ export const Default: Story = {
   args: {
   },
 };
-
-export const InvertedPrimary: Story = {
+export const NotCollapsed: Story = {
   args: {
-    theme: LangSwitcherThems.INVERTED_PRIMARY,
+    collapsed: false,
+  },
+  decorators: [
+    (Story: StoryFn) => (
+      <div style={
+          {
+            background: 'var(--inverted-bg-color)',
+            padding: '20px',
+            display: 'inline-block',
+          }
+        }
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+export const Collapsed: Story = {
+  args: {
+    collapsed: true,
   },
   decorators: [
     (Story: StoryFn) => (

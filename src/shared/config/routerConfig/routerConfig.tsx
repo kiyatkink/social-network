@@ -3,21 +3,19 @@ import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFound } from 'pages/NotFound';
 
-const Routes = {
-  ABOUT: 'about',
-  MAIN: 'main',
-  NOT_FOUND: 'not_found',
-} as const;
-
-type Route = (typeof Routes)[keyof typeof Routes];
-
-const RoutesPaths: Record<Route, string> = {
+export enum Routes {
+  ABOUT = 'about',
+  MAIN = 'main',
+  NOT_FOUND = 'not_found',
+}
+export const RoutesPaths: Record<Routes, string> = {
   [Routes.ABOUT]: '/about',
   [Routes.MAIN]: '/',
   [Routes.NOT_FOUND]: '*',
 } as const;
 
-export const routeConfig: Record<Route, RouteProps> = {
+export type RoutesPath = (typeof RoutesPaths)[keyof typeof RoutesPaths];
+export const routeConfig: Record<Routes, RouteProps> = {
   [Routes.ABOUT]: {
     path: RoutesPaths[Routes.ABOUT],
     element: <AboutPage />,

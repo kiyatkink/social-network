@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppButton } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { ThemSwitcher } from 'features/ThemSwitcher';
-import { LanguageSwitcher, LangSwitcherThems } from 'features/LanguageSwitcher';
-import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import cls from './Sidebar.module.scss';
+import { SidebarItemsList } from '../SidebarItemsList/SidebarItemsList';
 
 interface SidebarProps {
     className?: string
@@ -12,17 +12,25 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = (props) => {
   const { className } = props;
   const [collapsed, setCollapsed] = useState(false);
-  const { t } = useTranslation();
   const toggleCollapsed = () => {
     setCollapsed((prev) => !prev);
   };
   return (
     <div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
-      <AppButton onClick={toggleCollapsed}>{t('Тогл')}</AppButton>
+      <SidebarItemsList collapsed={collapsed} />
       <div className={cls.footer}>
         <ThemSwitcher className={cls.ThemSwitcher_size} />
-        <LanguageSwitcher theme={LangSwitcherThems.INVERTED_PRIMARY} />
+        <LanguageSwitcher collapsed={collapsed} />
       </div>
+      <AppButton
+        className={cls.TogglePosition}
+        onClick={toggleCollapsed}
+        theme={AppButtonThems.INVERTED}
+        size={AppButtonSizes.L}
+        square
+      >
+        { collapsed ? '>' : '<' }
+      </AppButton>
     </div>
   );
 };

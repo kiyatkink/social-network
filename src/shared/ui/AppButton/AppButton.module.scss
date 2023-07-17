@@ -18,5 +18,34 @@
   cursor: pointer;
   outline: inherit;
   background-color: var(--inverted-bg-color);
-  color: var(--bg-color)
+  color: var(--inverted-primary-color)
+}
+
+.primary {
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: var(--bg-color);
+  color: var(--primary-color)
+}
+
+.m {
+  font-size: var(--font-line-m);
+  padding: 8px 4px;
+}
+
+.l {
+  font-size: var(--font-line-l);
+  padding: 10px 5px;
+}
+
+.xl {
+  font-size: var(--font-line-xl);
+  padding: 15px 10px;
+}
+
+.square{
+  aspect-ratio: 1 / 1;
 }
