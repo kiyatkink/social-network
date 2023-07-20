@@ -12,7 +12,7 @@ export function StylesDecorator(StoryComponent: StoryFn, context: StoryContext) 
   }, [setTheme, storybookTheme])
 
   return (
-    <div className={`app ${theme}`} style={{ padding: '1rem' }}>
+    <div className="app" style={{ padding: '1rem' }}>
       <StoryComponent />
     </div>
   )

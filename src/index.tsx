@@ -5,12 +5,15 @@ import { App } from 'app/App';
 import 'app/styles/index.scss';
 import { ThemeProvider } from 'shared/lib/theme';
 import 'shared/config/i18n/i18next';
+import { ErrorBoundary } from 'app/ErrorBoundary';
 
 render(
   <BrowserRouter>
     <ThemeProvider>
       <Suspense fallback="">
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </Suspense>
     </ThemeProvider>
   </BrowserRouter>,
