@@ -15,9 +15,10 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   overrides: [
     {
-      'files': ['**/?(*.)+(spec|test).[tj]s?(x)'],
+      'files': ['**/?(*.)+(spec|test|stories).[tj]s?(x)'],
       'rules': {
         'i18next/no-literal-string': 'off',
+        'max-len': 'off',
       },
     },
   ],

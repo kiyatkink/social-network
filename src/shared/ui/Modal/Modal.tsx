@@ -9,7 +9,7 @@ interface ModalProps {
     className?: string,
     children?: ReactNode,
     isOpen?: boolean,
-    toClose?: () => void
+    toClose?: (newState: boolean) => void
 }
 
 export const Modal: FC<ModalProps> = (props) => {
@@ -24,7 +24,7 @@ export const Modal: FC<ModalProps> = (props) => {
   const handlerClose = useCallback(() => {
     setClosing(true)
     ref.current = setTimeout(() => {
-      toClose()
+      toClose(false)
       setClosing(false)
       setAddClassOpen(false)
     }, 200)

@@ -22,7 +22,7 @@ export interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 export const AppButton: FC<AppButtonProps> = (props) => {
   const {
     className,
-    theme,
+    theme = '',
     children,
     square = false,
     size = AppButtonSizes.M,
