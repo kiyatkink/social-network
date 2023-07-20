@@ -3,6 +3,7 @@ import { StylesDecorator } from './decorators/StylesDecorator';
 import { RouterDecorator } from './decorators/RouterDecorator';
 import { ThemeContextDecorator } from './decorators/ThemContextDecorator';
 import { TranslationDecorator } from './decorators/TranslationDecorator';
+import { StoreDecorator } from './decorators/StoreDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -48,6 +49,7 @@ const preview: Preview = {
     TranslationDecorator,
     ThemeContextDecorator,
     RouterDecorator,
+    StoreDecorator,
   ],
 };
 
