@@ -1,0 +1,11 @@
+.LoginUserForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+}
+
+.btn {
+  align-self: flex-end;
+  padding: 10px 15px;
+}

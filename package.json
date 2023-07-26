@@ -43,6 +43,7 @@
     "json-server": "^0.17.3",
     "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.5.3",
+    "reg-cli": "^0.17.7",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "storybook": "^7.0.26",
@@ -72,7 +73,8 @@
     "build-storybook": "storybook build -c ./config/storybook",
     "loki:test": "loki test",
     "loki:approve": "loki approve",
-    "storybook:loki:ci": "concurrently -s first -k \"yarn storybook\" \"yarn loki:test\""
+    "storybook:loki:ci": "concurrently -s first -k \"yarn storybook\" \"yarn loki:test\"",
+    "loki:report": "reg-cli ./.loki/current ./.loki/reference ./.loki/difference -R ./.loki/report.html"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

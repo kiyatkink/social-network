@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AppButton, AppButtonThems } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './LanguageSwitcher.module.scss'
@@ -21,6 +21,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
     <AppButton
       theme={AppButtonThems.INVERTED}
       onClick={toggleLanguage}
+      size={AppButtonSizes.L}
       className={classNames(cls.LanguageSwitcher, {}, [className])}
     >
       { collapsed ? t('Короткий язык') : t('Язык')}

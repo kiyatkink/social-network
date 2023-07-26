@@ -19,6 +19,7 @@ module.exports = {
       'rules': {
         'i18next/no-literal-string': 'off',
         'max-len': 'off',
+        'react-hooks/rules-of-hooks': 'off',
       },
     },
   ],
@@ -59,5 +60,6 @@ module.exports = {
     }],
     'no-param-reassign': [2, { 'ignorePropertyModificationsFor': ['config'] }],
     'react/destructuring-assignment': 'off',
+    'jsx-a11y/no-autofocus': 'off',
   },
 };

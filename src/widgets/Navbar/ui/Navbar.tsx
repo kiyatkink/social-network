@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FC, useState } from 'react';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { useTranslation } from 'react-i18next';
+import { LoginUserModal } from 'features/LoginUserModal';
 import cls from './Navbar.module.scss';
 import { AppButton, AppButtonSizes, AppButtonThems } from '../../../shared/ui/AppButton/AppButton';
 
@@ -15,14 +15,9 @@ export const Navbar: FC<NavbarProps> = (props) => {
   return (
     <div className={classNames(cls.Navbar, {}, [classesNames])}>
       <div className={cls.LinkSection}>
-        {/* eslint-disable-next-line i18next/no-literal-string */}
-        <Modal isOpen={modalIsOpen} toClose={setModalIsOpen}>
-          Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit.
-          A alias consequuntur inventore nemo obcaecati, omnis quibusdam quo ullam vitae voluptas.
-        </Modal>
+        <LoginUserModal isOpen={modalIsOpen} toClose={setModalIsOpen} />
         <AppButton
-          size={AppButtonSizes.M}
+          size={AppButtonSizes.L}
           theme={AppButtonThems.INVERTED}
           onClick={() => setModalIsOpen(true)}
         >

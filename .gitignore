@@ -6,3 +6,4 @@
 /storybook-static
 .env.dev
 .env.prod
+reg.json
