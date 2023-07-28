@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
+import { LoginUserReducer } from 'features/LoginUserModal';
 import { StoreSchema } from '../types/StoreSchema';
 
 export function createReduxStore(initialStore?: StoreSchema) {
@@ -9,6 +10,7 @@ export function createReduxStore(initialStore?: StoreSchema) {
     reducer: {
       counter: counterReducer,
       user: userReducer,
+      loginUser: LoginUserReducer,
     },
     devTools: isDev,
     preloadedState: initialStore,

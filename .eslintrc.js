@@ -56,10 +56,11 @@ module.exports = {
     'semi': 'off',
     'max-len': [1, {
       'ignoreComments': true,
-      'code': 100,
+      'code': 120,
     }],
     'no-param-reassign': [2, { 'ignorePropertyModificationsFor': ['config'] }],
     'react/destructuring-assignment': 'off',
     'jsx-a11y/no-autofocus': 'off',
+    'consistent-return': 'off',
   },
 };

@@ -31,6 +31,20 @@
   color: var(--primary-color)
 }
 
+.outline {
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--primary-color);
+  outline: 1px solid var(--primary-color);
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
 .m {
   font-size: var(--font-size-m);
 }

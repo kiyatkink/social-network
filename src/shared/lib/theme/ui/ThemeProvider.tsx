@@ -2,12 +2,12 @@ import {
   FC, PropsWithChildren, useEffect, useMemo, useState,
 } from 'react';
 import {
-  LOCAL_STORAGE_THEME_VALUE,
   ThemeContext,
   Thems,
 } from '../lib/ThemeContext';
+import { THEME_VALUE } from '../../../consts/localstorage';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_VALUE) as Thems || Thems.LIGHT;
+const defaultTheme = localStorage.getItem(THEME_VALUE) as Thems || Thems.LIGHT;
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [theme, setTheme] = useState<Thems>(defaultTheme);
 

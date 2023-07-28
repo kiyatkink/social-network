@@ -6,6 +6,7 @@ export enum AppButtonThems {
     CLEAR = 'clear',
     INVERTED = 'inverted',
     PRIMARY = 'primary',
+    OUTLINE = 'outline'
 }
 
 export enum AppButtonSizes {
@@ -17,7 +18,8 @@ export interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className?: string
     theme?: AppButtonThems
     size?: AppButtonSizes
-    square?: boolean
+    square?: boolean,
+    disabled?: boolean
 }
 export const AppButton: FC<AppButtonProps> = (props) => {
   const {
@@ -26,13 +28,21 @@ export const AppButton: FC<AppButtonProps> = (props) => {
     children,
     square = false,
     size = AppButtonSizes.M,
+    disabled = false,
     ...otherProps
   } = props;
+
+  const mods: Record<string, boolean> = {
+    [cls.square]: square,
+    [cls.disabled]: disabled,
+  }
+
   return (
     <button
       className={
-        classNames(cls.AppButton, { [cls.square]: square }, [className, cls[theme], cls[size]])
+        classNames(cls.AppButton, mods, [className, cls[theme], cls[size]])
       }
+      disabled={disabled}
       {...otherProps}
     >
       { children }

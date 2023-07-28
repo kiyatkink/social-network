@@ -17,3 +17,7 @@ declare module '*.svg' {
     const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
     export default SVG;
 }
+
+declare module 'extend-redux' {
+    import 'redux-thunk/extend-redux'
+}

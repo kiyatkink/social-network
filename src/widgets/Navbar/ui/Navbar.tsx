@@ -1,9 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginUserModal } from 'features/LoginUserModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
+import { getUserData, userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
-import { AppButton, AppButtonSizes, AppButtonThems } from '../../../shared/ui/AppButton/AppButton';
 
 export interface NavbarProps {
     classesNames?: string
@@ -12,6 +14,30 @@ export const Navbar: FC<NavbarProps> = (props) => {
   const { classesNames } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const { t } = useTranslation()
+  const authData = useSelector(getUserData)
+  const dispatch = useDispatch()
+
+  const userExit = useCallback(() => {
+    dispatch(userActions.deleteUser())
+    setModalIsOpen(false)
+  }, [dispatch])
+
+  if (authData) {
+    return (
+      <div className={classNames(cls.Navbar, {}, [classesNames])}>
+        <div className={cls.LinkSection}>
+          <AppButton
+            size={AppButtonSizes.L}
+            theme={AppButtonThems.INVERTED}
+            onClick={userExit}
+          >
+            {t('Выйти')}
+          </AppButton>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={classNames(cls.Navbar, {}, [classesNames])}>
       <div className={cls.LinkSection}>

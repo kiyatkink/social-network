@@ -37,6 +37,12 @@ export const Primary: Story = {
   },
 };
 
+export const Outline: Story = {
+  args: {
+    children: 'Текст',
+    theme: AppButtonThems.OUTLINE,
+  },
+};
 export const SizeL: Story = {
   args: {
     children: 'Текст',
