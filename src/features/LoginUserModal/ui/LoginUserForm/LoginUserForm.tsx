@@ -5,19 +5,23 @@ import { AppInput, AppInputSize } from 'shared/ui/AppInput/AppInput';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, TextThems } from 'shared/ui/Text/Text';
+import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
 import cls from './LoginUserForm.module.scss'
 import { getLoginUser } from '../../model/selectors/getLoginUser/getLoginUser';
-import { LoginUserActions } from '../../model/slice/LoginUserSlice';
+import { LoginUserActions, LoginUserReducer } from '../../model/slice/LoginUserSlice';
 import { loginByUsernameAndPassword } from '../../model/services/loginByUsernameAndPassword/loginByUsernameAndPassword';
 
 interface LoginUserFormProps {
     className?: string
 }
 
-export const LoginUserForm: FC<LoginUserFormProps> = (props) => {
+const LoginUserForm: FC<LoginUserFormProps> = (props) => {
   const { className } = props
   const { t } = useTranslation()
   const dispatch = useDispatch()
+
+  useAsyncReducer('loginUser', LoginUserReducer)
+
   const {
     username, password, isLoading, error,
   } = useSelector(getLoginUser)
@@ -64,3 +68,5 @@ export const LoginUserForm: FC<LoginUserFormProps> = (props) => {
     </div>
   );
 };
+
+export default LoginUserForm
