@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton, AppButtonProps, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { Thems, useTheme } from 'shared/lib/theme';
@@ -9,7 +9,7 @@ import cls from './ThemSwitcher.module.scss';
 interface ThemSwitcherProps extends AppButtonProps{
     className?: string
 }
-export const ThemSwitcher: FC<ThemSwitcherProps> = (props) => {
+export const ThemSwitcher: FC<ThemSwitcherProps> = memo((props: ThemSwitcherProps) => {
   const { className, ...otherProps } = props;
   const { theme, toggleTheme } = useTheme();
   return (
@@ -22,4 +22,4 @@ export const ThemSwitcher: FC<ThemSwitcherProps> = (props) => {
       { theme === Thems.DARK ? <Moon /> : <Sun /> }
     </AppButton>
   );
-};
+});

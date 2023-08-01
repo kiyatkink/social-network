@@ -1,8 +1,10 @@
-import { FC, SVGProps, VFC } from 'react';
+import {
+  FC, memo, SVGProps, VFC,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkSizes, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutesPath } from '../../../../shared/config/routerConfig/routerConfig';
+import { RoutesPath } from 'shared/config/routerConfig/routerConfig';
 import cls from './SidebarItem.module.scss'
 
 export interface SidebarItemProps {
@@ -14,7 +16,7 @@ export interface SidebarItemProps {
     collapsed?: boolean,
 }
 
-export const SidebarItem: FC<SidebarItemProps> = (props) => {
+export const SidebarItem: FC<SidebarItemProps> = memo((props: SidebarItemProps) => {
   const {
     className,
     path,
@@ -36,4 +38,4 @@ export const SidebarItem: FC<SidebarItemProps> = (props) => {
       { collapsed ? '' : t(`${label}`)}
     </AppLink>
   );
-};
+});

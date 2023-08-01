@@ -4,6 +4,7 @@ import { LoginUserSchema } from 'features/LoginUserModal';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { AnyAction, ReducersMapObject } from '@reduxjs/toolkit';
 import { CombinedState, Reducer } from 'redux';
+import { ProfileSchema } from 'entities/Profile';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -11,6 +12,7 @@ export interface StoreSchema {
 
     // Асинхронные редюсеры
     loginUser?: LoginUserSchema
+    profile?: ProfileSchema
 }
 
 export type StoreSchemaKeys = keyof StoreSchema

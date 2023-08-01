@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { ThemSwitcher } from 'features/ThemSwitcher';
@@ -9,7 +9,7 @@ import { SidebarItemsList } from '../SidebarItemsList/SidebarItemsList';
 interface SidebarProps {
     className?: string
 }
-export const Sidebar: FC<SidebarProps> = (props) => {
+export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
   const { className } = props;
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => {
@@ -33,4 +33,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       </AppButton>
     </div>
   );
-};
+});

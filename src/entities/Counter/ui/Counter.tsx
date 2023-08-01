@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { counterActions } from '../model/slice/counterSlice';
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
-export const Counter: FC = (props) => {
+export const Counter: FC = memo(() => {
   const count = useSelector(getCounterValue)
   const dispatch = useDispatch()
 
@@ -23,4 +23,4 @@ export const Counter: FC = (props) => {
       <AppButton data-testid="decrement-btn" onClick={decrement}>-</AppButton>
     </div>
   )
-};
+});

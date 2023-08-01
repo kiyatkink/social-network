@@ -15,7 +15,7 @@ interface LoginUserFormProps {
     className?: string
 }
 
-const LoginUserForm: FC<LoginUserFormProps> = (props) => {
+const LoginUserForm: FC<LoginUserFormProps> = (props: LoginUserFormProps) => {
   const { className } = props
   const { t } = useTranslation()
   const dispatch = useDispatch()

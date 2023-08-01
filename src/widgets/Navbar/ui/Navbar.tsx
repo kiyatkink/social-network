@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { FC, useCallback, useState } from 'react';
+import {
+  FC, memo, useCallback, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginUserModal } from 'features/LoginUserModal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +12,7 @@ import cls from './Navbar.module.scss';
 export interface NavbarProps {
     classesNames?: string
 }
-export const Navbar: FC<NavbarProps> = (props) => {
+export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
   const { classesNames } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const { t } = useTranslation()
@@ -52,4 +54,4 @@ export const Navbar: FC<NavbarProps> = (props) => {
       </div>
     </div>
   );
-};
+});

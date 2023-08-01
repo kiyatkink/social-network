@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -8,7 +8,7 @@ interface LanguageSwitcherProps {
     className?: string
     collapsed?: boolean
 }
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
+export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo((props: LanguageSwitcherProps) => {
   const { className, collapsed } = props;
 
   const { t, i18n } = useTranslation()
@@ -27,4 +27,4 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
       { collapsed ? t('Короткий язык') : t('Язык')}
     </AppButton>
   );
-};
+});
