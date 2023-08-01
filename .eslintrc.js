@@ -62,5 +62,6 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'jsx-a11y/no-autofocus': 'off',
     'consistent-return': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 };

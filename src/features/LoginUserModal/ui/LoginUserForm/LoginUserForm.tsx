@@ -41,6 +41,7 @@ const LoginUserForm: FC<LoginUserFormProps> = (props) => {
   return (
     <div className={classNames(cls.LoginUserForm, {}, [className])}>
       <AppInput
+        data-testid="username_input"
         type="text"
         placeholder={t('Логин')}
         value={username}
@@ -49,14 +50,16 @@ const LoginUserForm: FC<LoginUserFormProps> = (props) => {
         autofocus
       />
       <AppInput
+        data-testid="password_input"
         type="password"
         placeholder={t('Пароль')}
         value={password}
         onChange={setPassword}
         size={AppInputSize.L}
       />
-      { error && <Text text={t('Пользователь не найден')} theme={TextThems.ERROR} /> }
+      { error && <Text data-testid="error_text" text={t('Пользователь не найден')} theme={TextThems.ERROR} /> }
       <AppButton
+        data-testid="login_btn"
         className={cls.btn}
         theme={AppButtonThems.OUTLINE}
         size={AppButtonSizes.L}
