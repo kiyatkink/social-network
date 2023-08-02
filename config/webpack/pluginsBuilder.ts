@@ -9,6 +9,9 @@ export function pluginsBuilder(options : BuildOptions): Array<webpack.WebpackPlu
 
   const config: Array<webpack.WebpackPluginInstance> = [
     new webpack.ProgressPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
     }),
