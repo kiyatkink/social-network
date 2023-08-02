@@ -5,6 +5,7 @@ import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { AnyAction, ReducersMapObject } from '@reduxjs/toolkit';
 import { CombinedState, Reducer } from 'redux';
 import { ProfileSchema } from 'entities/Profile';
+import { AxiosInstance } from 'axios';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -25,4 +26,12 @@ export interface ReducerManager {
 }
 export interface StoreWithReducerManager extends ToolkitStore<StoreSchema> {
     reducerManager?: ReducerManager
+}
+
+export interface ExtraType {
+    api?: AxiosInstance
+}
+export interface ThunkApiConfig<T> {
+    rejectValue: T,
+    extra: ExtraType
 }
