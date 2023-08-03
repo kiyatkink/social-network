@@ -46,6 +46,7 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
         <input
           type={type}
           className={cls.input}
+          value={value}
           onChange={inputChange}
           {...otherProps}
           autoFocus={autofocus}
