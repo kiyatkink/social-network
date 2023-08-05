@@ -12,7 +12,7 @@ export interface SidebarItemProps {
     path: RoutesPath,
     theme?: AppLinkTheme,
     label: string,
-    Icon?: VFC<SVGProps<SVGSVGElement>>,
+    Icon: VFC<SVGProps<SVGSVGElement>>,
     collapsed?: boolean,
 }
 

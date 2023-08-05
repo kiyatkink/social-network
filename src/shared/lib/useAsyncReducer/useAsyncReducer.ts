@@ -8,11 +8,11 @@ export function useAsyncReducer(key: StoreSchemaKeys, reducer: Reducer) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    store.reducerManager.add(key, reducer)
+    store.reducerManager?.add(key, reducer)
     dispatch({ type: `@INIT ${key}` })
 
     return () => {
-      store.reducerManager.remove(key)
+      store.reducerManager?.remove(key)
       dispatch({ type: `@DELETE ${key}` })
     }
   }, [dispatch, key, reducer, store.reducerManager]);

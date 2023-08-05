@@ -9,6 +9,4 @@ const meta: Meta<typeof ProfilePage> = {
 export default meta;
 type Story = StoryObj<typeof ProfilePage>;
 export const Default: Story = {
-  args: {
-  },
 };

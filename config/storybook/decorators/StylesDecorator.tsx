@@ -8,7 +8,7 @@ export function StylesDecorator(StoryComponent: StoryFn, context: StoryContext) 
   const { theme, setTheme } = useContext(ThemeContext)
 
   useEffect(() => {
-    setTheme(storybookTheme === Thems.DARK ? Thems.DARK : Thems.LIGHT)
+    setTheme?.(storybookTheme === Thems.DARK ? Thems.DARK : Thems.LIGHT)
   }, [setTheme, storybookTheme])
 
   return (

@@ -19,12 +19,12 @@ export const Modal: FC<ModalProps> = (props) => {
 
   const [isClosing, setClosing] = useState(false);
   const [addClassOpen, setAddClassOpen] = useState(false);
-  const ref: MutableRefObject<ReturnType<typeof setTimeout>> = useRef()
+  const ref = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
 
   const handlerClose = useCallback(() => {
     setClosing(true)
     ref.current = setTimeout(() => {
-      toClose(false)
+      toClose?.(false)
       setClosing(false)
       setAddClassOpen(false)
     }, 200)
@@ -39,7 +39,7 @@ export const Modal: FC<ModalProps> = (props) => {
   }, [handlerClose])
 
   useEffect(() => {
-    let timeout: null | ReturnType<typeof setTimeout>;
+    let timeout: ReturnType<typeof setTimeout>;
     if (isOpen) {
       document.addEventListener('keydown', onKeyDown);
       timeout = setTimeout(() => {

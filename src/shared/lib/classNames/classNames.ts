@@ -1,5 +1,5 @@
-export type FlagsType = Record<string, boolean | string>
-export function classNames(mainClass: string, flags?: FlagsType, classes?: Array<string>): string {
+export type FlagsType = Record<string, boolean | string | undefined>
+export function classNames(mainClass: string, flags: FlagsType, classes: Array<string | undefined>): string {
   return [
     mainClass,
     ...classes.filter(Boolean),

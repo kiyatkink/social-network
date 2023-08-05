@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports" : true, // Позволяет писать импорт так "import React from "react";", а не так "import * as React from "react";"
     "esModuleInterop" : true, // Позволяет избежать проблемы с импортами
     "baseUrl": "./src",
+    "strict": true,
     "paths": {
       "src/*": ["./src/*"]
     }
