@@ -31,7 +31,6 @@ export interface StoreWithReducerManager extends ToolkitStore<StoreSchema> {
 
 export interface ExtraType {
     api: AxiosInstance
-    navigate?: NavigateFunction
 }
 export interface ThunkApiConfig<T> {
     rejectValue: T,

@@ -9,8 +9,8 @@ import { ErrorBoundary } from 'app/ErrorBoundary';
 import { StoreProvider } from 'app/StoreProvider';
 
 render(
-  <BrowserRouter>
-    <StoreProvider>
+  <StoreProvider>
+    <BrowserRouter>
       <ThemeProvider>
         <Suspense fallback="">
           <ErrorBoundary>
@@ -18,7 +18,7 @@ render(
           </ErrorBoundary>
         </Suspense>
       </ThemeProvider>
-    </StoreProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </StoreProvider>,
   document.getElementById('root'),
 );

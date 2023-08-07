@@ -48,8 +48,8 @@ const preview: Preview = {
     StylesDecorator,
     TranslationDecorator,
     ThemeContextDecorator,
-    StoreDecorator,
     RouterDecorator,
+    StoreDecorator,
   ],
 };
 

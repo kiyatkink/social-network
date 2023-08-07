@@ -2,7 +2,7 @@ import { userEvent } from '@storybook/testing-library';
 import { fireEvent, screen } from '@testing-library/react'
 import { customRender } from 'shared/lib/tests/ customRender';
 import axios from 'axios';
-import LoginUserForm from './LoginUserForm';
+import { LoginUserForm } from './LoginUserForm';
 
 jest.mock('axios');
 

@@ -3,11 +3,10 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api'
 import { CombinedState } from 'redux';
-import { NavigateFunction } from 'react-router-dom';
 import { ReducerManager, StoreSchema, StoreWithReducerManager } from '../types/StoreSchema';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialStore?: StoreSchema, navigate?: NavigateFunction) {
+export function createReduxStore(initialStore?: StoreSchema) {
   const isDev = process.env.MODE === 'development'
 
   const staticReducers: ReducersMapObject<StoreSchema> = {
@@ -27,7 +26,6 @@ export function createReduxStore(initialStore?: StoreSchema, navigate?: Navigate
       thunk: {
         extraArgument: {
           api: $api,
-          navigate,
         },
       },
     }),

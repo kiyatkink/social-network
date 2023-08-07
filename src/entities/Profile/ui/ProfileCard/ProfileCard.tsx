@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import {
+  FC, memo, useCallback, useState,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next';
@@ -14,7 +16,7 @@ interface ProfileCardProps {
     firstname: string
 }
 
-export const ProfileCard: FC<ProfileCardProps> = (props) => {
+export const ProfileCard: FC<ProfileCardProps> = memo((props: ProfileCardProps) => {
   const { className, lastname, firstname } = props
   const { t } = useTranslation('profile')
   const [isDisable, setDisable] = useState(true)
@@ -63,4 +65,4 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
       </div>
     </div>
   );
-};
+});

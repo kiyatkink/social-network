@@ -18,16 +18,16 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
   const data = useSelector(getProfileData)
   const user = useSelector(getUserData)
 
-  useAsyncReducer('profile', profileReducer)
+  useAsyncReducer('profile', profileReducer, true)
 
   useEffect(() => {
-    if (user) {
+    if (user && !data) {
       dispatch(fetchProfileData())
     }
     if (!user) {
       dispatch(profileActions.deleteProfileData())
     }
-  }, [dispatch, user]);
+  }, [data, dispatch, user]);
 
   return (
     <div className={classNames(cls.ProfilePage, {}, [className])}>

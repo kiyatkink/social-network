@@ -17,12 +17,12 @@ export const customRender = (component: ReactNode, options: CustomRenderOptions)
     initialStore,
   } = options
   return render(
-    <MemoryRouter initialEntries={[route]}>
-      <StoreProvider initialStore={initialStore}>
+    <StoreProvider initialStore={initialStore}>
+      <MemoryRouter initialEntries={[route]}>
         <I18nextProvider i18n={i18n}>
           {component}
         </I18nextProvider>
-      </StoreProvider>
-    </MemoryRouter>,
+      </MemoryRouter>
+    </StoreProvider>,
   )
 };
