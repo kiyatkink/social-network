@@ -1,9 +1,9 @@
 import type { Preview } from '@storybook/react';
-import { StylesDecorator } from './decorators/StylesDecorator';
-import { RouterDecorator } from './decorators/RouterDecorator';
-import { ThemeContextDecorator } from './decorators/ThemContextDecorator';
-import { TranslationDecorator } from './decorators/TranslationDecorator';
-import { StoreDecorator } from './decorators/StoreDecorator';
+import { StylesDecorator } from '../../src/shared/lib/storybookDecorators/StylesDecorator';
+import { RouterDecorator } from '../../src/shared/lib/storybookDecorators/RouterDecorator';
+import { ThemeContextDecorator } from '../../src/shared/lib/storybookDecorators/ThemContextDecorator';
+import { TranslationDecorator } from '../../src/shared/lib/storybookDecorators/TranslationDecorator';
+import { StoreDecorator } from '../../src/shared/lib/storybookDecorators/StoreDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -49,7 +49,7 @@ const preview: Preview = {
     TranslationDecorator,
     ThemeContextDecorator,
     RouterDecorator,
-    StoreDecorator,
+    StoreDecorator(),
   ],
 };
 

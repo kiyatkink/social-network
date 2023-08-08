@@ -63,5 +63,7 @@ module.exports = {
     'jsx-a11y/no-autofocus': 'off',
     'consistent-return': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
+    'react/jsx-no-useless-fragment': 'off',
+    'func-names': 'off',
   },
 };

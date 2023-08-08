@@ -1,7 +1,7 @@
 import { StoryFn, StoryContext } from '@storybook/react';
 import 'app/styles/index.scss'
 import { useContext, useEffect } from 'react';
-import { ThemeContext, Thems } from 'shared/lib/theme';
+import { ThemeContext, Thems } from '../theme';
 
 export function StylesDecorator(StoryComponent: StoryFn, context: StoryContext) {
   const { theme: storybookTheme } = context.globals || context.parameters
