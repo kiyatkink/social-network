@@ -15,7 +15,6 @@ export const ThemSwitcher: FC<ThemSwitcherProps> = memo((props: ThemSwitcherProp
   return (
     <AppButton
       className={classNames(cls.ThemSwitcher, {}, [className])}
-      theme={AppButtonThems.CLEAR}
       onClick={toggleTheme}
       {...otherProps}
     >

@@ -3,6 +3,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFound } from 'pages/NotFound';
 import { ProfilePage } from 'pages/ProfilePage';
+import { Path } from 'webpack-cli';
 
 export enum Routes {
   ABOUT = 'about',
@@ -18,7 +19,9 @@ export const RoutesPaths: Record<Routes, string> = {
 } as const;
 
 export type RoutesPath = (typeof RoutesPaths)[keyof typeof RoutesPaths];
-export const routeConfig: Record<Routes, RouteProps> = {
+
+export type RoutePropsWithAuth = RouteProps & { onlyAuth?: boolean }
+export const routeConfig: Record<Routes, RoutePropsWithAuth> = {
   [Routes.ABOUT]: {
     path: RoutesPaths[Routes.ABOUT],
     element: <AboutPage />,
@@ -26,6 +29,7 @@ export const routeConfig: Record<Routes, RouteProps> = {
   [Routes.PROFILE]: {
     path: RoutesPaths[Routes.PROFILE],
     element: <ProfilePage />,
+    onlyAuth: true,
   },
   [Routes.MAIN]: {
     path: RoutesPaths[Routes.MAIN],

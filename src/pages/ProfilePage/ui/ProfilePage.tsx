@@ -1,11 +1,6 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchProfileData, ProfileCard, profileReducer, getProfileData, profileActions,
-} from 'entities/Profile';
-import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
-import { getUserData } from 'entities/User';
+import { EditableProfileCard } from 'features/EditableProfileCard';
 import cls from './ProfilePage.module.scss'
 
 interface ProfilePageProps {
@@ -14,24 +9,9 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = (props) => {
   const { className } = props
-  const dispatch = useDispatch()
-  const data = useSelector(getProfileData)
-  const user = useSelector(getUserData)
-
-  useAsyncReducer('profile', profileReducer, true)
-
-  useEffect(() => {
-    if (user && !data) {
-      dispatch(fetchProfileData())
-    }
-    if (!user) {
-      dispatch(profileActions.deleteProfileData())
-    }
-  }, [data, dispatch, user]);
-
   return (
     <div className={classNames(cls.ProfilePage, {}, [className])}>
-      { data && <ProfileCard firstname={data?.first} lastname={data?.lastname} />}
+      <EditableProfileCard />
     </div>
   );
 };

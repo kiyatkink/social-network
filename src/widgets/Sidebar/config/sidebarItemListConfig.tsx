@@ -9,7 +9,11 @@ export enum Items {
     MAIN = 'main',
     PROFILE = 'profile'
 }
-export const sidebarItemListConfig: Record<Items, SidebarItemProps> = {
+
+interface SidebarItemPropsAndParams extends SidebarItemProps {
+  onlyAuth?: boolean
+}
+export const sidebarItemListConfig: Record<Items, SidebarItemPropsAndParams> = {
   [Routes.MAIN]: {
     path: RoutesPaths[Routes.MAIN],
     label: 'Главная',
@@ -24,5 +28,6 @@ export const sidebarItemListConfig: Record<Items, SidebarItemProps> = {
     path: RoutesPaths[Routes.PROFILE],
     label: 'Профиль',
     Icon: ProfilePageIcon,
+    onlyAuth: true,
   },
 } as const

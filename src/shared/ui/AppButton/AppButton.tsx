@@ -3,10 +3,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppButton.module.scss';
 
 export enum AppButtonThems {
-    CLEAR = 'clear',
     INVERTED = 'inverted',
     PRIMARY = 'primary',
-    OUTLINE = 'outline'
+    OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red'
 }
 
 export enum AppButtonSizes {

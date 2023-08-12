@@ -4,7 +4,15 @@ import { customRender } from 'shared/lib/tests/ customRender';
 import axios from 'axios';
 import { LoginUserForm } from './LoginUserForm';
 
-jest.mock('axios');
+jest.mock('axios', () => ({
+  create: () => ({
+    interceptors: {
+      request: { eject: jest.fn(), use: jest.fn() },
+      response: { eject: jest.fn(), use: jest.fn() },
+    },
+  }),
+  post: jest.fn(),
+}));
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 

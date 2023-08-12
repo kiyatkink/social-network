@@ -16,12 +16,6 @@ const meta: Meta<typeof AppButton> = {
 
 export default meta;
 type Story = StoryObj<typeof AppButton>;
-export const Clear: Story = {
-  args: {
-    children: 'Текст',
-    theme: AppButtonThems.CLEAR,
-  },
-};
 
 export const Inverted: Story = {
   args: {

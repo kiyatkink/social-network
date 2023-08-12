@@ -1,68 +1,129 @@
-import {
-  FC, memo, useCallback, useState,
-} from 'react';
+import { FC, memo, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next';
-import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { AppInput, AppInputSize } from 'shared/ui/AppInput/AppInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { profileActions } from 'entities/Profile';
+import { Spinner } from 'shared/ui/Spinner/Spinner';
+import { Country, CountrySelect } from 'entities/Country';
+import { Currency, CurrencySelect } from 'entities/Currency';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './ProfileCard.module.scss'
 
+export interface ProfileData {
+    first?: string,
+    lastname?: string,
+    age?: number,
+    currency?: Currency,
+    country?: Country,
+    city?: string,
+    username?: string,
+    avatar?: string
+}
 interface ProfileCardProps {
-    className?: string
-    lastname: string,
-    firstname: string
+    className?: string,
+    form: ProfileData | undefined,
+    isLoading: boolean,
+    changeFirst: (value: string) => void
+    changeLastname: (value: string) => void
+    changeAge: (value: string) => void,
+    changeCountry: (value: Country) => void,
+    changeCity: (value: string) => void,
+    changeCurrency: (value: Currency) => void,
+    changeUsername: (value: string) => void,
+    changeAvatar: (value: string) => void,
+    readonly: boolean
 }
 
 export const ProfileCard: FC<ProfileCardProps> = memo((props: ProfileCardProps) => {
-  const { className, lastname, firstname } = props
+  const {
+    className,
+    form,
+    isLoading,
+    changeFirst,
+    changeLastname,
+    changeAge,
+    changeCountry,
+    changeCity,
+    changeCurrency,
+    changeUsername,
+    changeAvatar,
+    readonly,
+  } = props
   const { t } = useTranslation('profile')
-  const [isDisable, setDisable] = useState(true)
-  const dispatch = useDispatch()
 
-  const editData = useCallback(() => {
-    setDisable((prev) => !prev)
-  }, [])
+  const avatarSize = useMemo(() => ({
+    width: '200px',
+    height: '200px',
+  }), [])
 
-  const onChangeFirstname = useCallback((value: string) => {
-    dispatch(profileActions.changeFirstName(value))
-  }, [dispatch])
-
-  const onChangeLastname = useCallback((value: string) => {
-    dispatch(profileActions.changeLastName(value))
-  }, [dispatch])
+  if (isLoading) {
+    return (
+      <div className={cls.spinner_wrapper}>
+        <Spinner />
+      </div>
+    )
+  }
 
   return (
     <div className={classNames(cls.ProfileCard, {}, [className])}>
-      <div className={cls.header}>
-        <Text title={t('Пользователь')} />
-        <AppButton
-          className={cls.btn}
-          size={AppButtonSizes.L}
-          theme={AppButtonThems.OUTLINE}
-          onClick={editData}
-        >
-          {t('Редактировать')}
-        </AppButton>
-      </div>
-      <div className={cls.main}>
-        <AppInput
-          onChange={onChangeFirstname}
-          disabled={isDisable}
-          size={AppInputSize.L}
-          value={firstname}
-          placeholder={t('Имя')}
-        />
-        <AppInput
-          onChange={onChangeLastname}
-          disabled={isDisable}
-          size={AppInputSize.L}
-          value={lastname}
-          placeholder={t('Фамилия')}
+      <div className={cls.avatar_wrapper}>
+        <Avatar
+          src={form?.avatar}
+          alt={t('Аватар')}
+          size={avatarSize}
         />
       </div>
+      <AppInput
+        onChange={changeFirst}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.first}
+        placeholder={t('Имя')}
+      />
+      <AppInput
+        onChange={changeLastname}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.lastname}
+        placeholder={t('Фамилия')}
+      />
+      <AppInput
+        onChange={changeAge}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.age}
+        placeholder={t('Возраст')}
+      />
+      <CountrySelect
+        readonly={readonly}
+        value={form?.country}
+        onChange={changeCountry}
+      />
+      <AppInput
+        onChange={changeCity}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.city}
+        placeholder={t('Город')}
+      />
+      <CurrencySelect
+        readonly={readonly}
+        value={form?.currency}
+        onChange={changeCurrency}
+      />
+      <AppInput
+        onChange={changeUsername}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.username}
+        placeholder={t('Имя пользователя')}
+      />
+      <AppInput
+        onChange={changeAvatar}
+        readOnly={readonly}
+        size={AppInputSize.L}
+        value={form?.avatar}
+        placeholder={t('Аватар')}
+      />
     </div>
   );
 });

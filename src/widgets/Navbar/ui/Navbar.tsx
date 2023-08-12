@@ -7,6 +7,7 @@ import { LoginUserModal } from 'features/LoginUserModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppButton, AppButtonSizes, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { getUserData, userActions } from 'entities/User';
+import { useNavigate } from 'react-router-dom';
 import cls from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -18,11 +19,15 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
   const { t } = useTranslation()
   const authData = useSelector(getUserData)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const userExit = useCallback(() => {
     dispatch(userActions.deleteUser())
     setModalIsOpen(false)
-  }, [dispatch])
+    if (window.location.pathname === '/profile') {
+      navigate('/')
+    }
+  }, [dispatch, navigate])
 
   if (authData) {
     return (

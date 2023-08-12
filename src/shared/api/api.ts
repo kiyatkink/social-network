@@ -1,10 +1,16 @@
 import axios from 'axios';
 import { AUTH_DATA_USER } from '../consts/localstorage';
 
-const token = localStorage.getItem(AUTH_DATA_USER)
 export const $api = axios.create({
   baseURL: process.env.API_URL,
-  headers: {
-    Authorization: token,
-  },
 })
+
+$api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem(AUTH_DATA_USER);
+    if (token) {
+      config.headers.Authorization = token;
+    }
+    return config;
+  },
+);

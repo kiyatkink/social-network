@@ -4,9 +4,8 @@ import { LoginUserSchema } from 'features/LoginUserModal';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { AnyAction, ReducersMapObject } from '@reduxjs/toolkit';
 import { CombinedState, Reducer } from 'redux';
-import { ProfileSchema } from 'entities/Profile';
+import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
-import { NavigateFunction } from 'react-router-dom';
 
 export interface StoreSchema {
     counter: CounterSchema

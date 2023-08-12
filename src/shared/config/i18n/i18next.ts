@@ -12,7 +12,7 @@ i18n
   .use(initReactI18next)
   .init({
     lng: localStorage.getItem('i18nextLng') || 'ru',
-    fallbackLng: 'en',
+    fallbackLng: localStorage.getItem('i18nextLng') || 'ru',
 
     debug: isDev,
 

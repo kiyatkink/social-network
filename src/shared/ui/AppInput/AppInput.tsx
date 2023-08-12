@@ -13,7 +13,7 @@ export interface AppInputProps extends HTMLInputProps{
     className?: string,
     type?: string,
     placeholder?: string,
-    value?: string,
+    value?: string | number,
     onChange?: (value: string) => void,
     autofocus?: boolean,
     size?: AppInputSize,
@@ -37,11 +37,7 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
 
   return (
     <div className={classNames(cls.AppInput, {}, [className, cls[size]])}>
-      { placeholder && (
-      <div className={cls.placeholder}>
-        {`${placeholder}/>`}
-      </div>
-        )}
+      { placeholder && <div>{`${placeholder}/>`}</div>}
       <div className={cls.input_wrapper}>
         <input
           type={type}

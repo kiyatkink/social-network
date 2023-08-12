@@ -8,8 +8,8 @@ describe('AppButton testing', () => {
     expect(buttonElement).toBeInTheDocument()
   })
   test('check theme class', () => {
-    render(<AppButton theme={AppButtonThems.CLEAR}>Hello</AppButton>)
+    render(<AppButton theme={AppButtonThems.OUTLINE}>Hello</AppButton>)
     const buttonElement = screen.getByText(/hello/i);
-    expect(buttonElement).toHaveClass(AppButtonThems.CLEAR)
+    expect(buttonElement).toHaveClass(AppButtonThems.OUTLINE)
   })
 })

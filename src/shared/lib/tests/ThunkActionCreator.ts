@@ -1,6 +1,6 @@
 import { StoreSchema } from 'app/StoreProvider';
 import { AsyncThunkAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { ThunkApiConfig } from 'app/StoreProvider/types/StoreSchema';
 
 type ActionCreatorType<Returned, ThunkArg, RejectedValue>
@@ -16,10 +16,13 @@ export class ThunkActionCreator<Returned, ThunkArg, RejectedValue> {
 
   getState: () => StoreSchema;
 
-  constructor(actionCreator: ActionCreatorType<Returned, ThunkArg, RejectedValue>) {
+  constructor(actionCreator: ActionCreatorType<Returned, ThunkArg, RejectedValue>, axiosInstance?: AxiosInstance) {
     this.actionCreator = actionCreator
     this.dispatch = jest.fn()
     this.getState = jest.fn()
+    if (axiosInstance) {
+      this.mockedAxios = axiosInstance as jest.Mocked<typeof axios>
+    }
   }
 
   async callAction(arg: ThunkArg) {
