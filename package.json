@@ -64,6 +64,7 @@
   "scripts": {
     "prepare": "husky install config/husky",
     "start": "webpack serve",
+    "start:dev": "concurrently \"yarn start\" \"yarn json-server:start\"",
     "build:prod": "webpack --env mode=prod",
     "build:dev": "webpack --env mode=dev",
     "json-server:start": "node ./json-server/index.js",
