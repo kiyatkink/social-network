@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from './Avatar';
-import green from '../../assets/tests/green.png'
+import black from '../../assets/tests/black.jpg'
 
 const meta: Meta<typeof Avatar> = {
   title: 'shared/Avatar',
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Avatar>;
 
 export const Default: Story = {
   args: {
-    src: green,
+    src: black,
     alt: 'abc',
   },
 };
