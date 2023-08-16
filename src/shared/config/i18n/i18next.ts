@@ -17,7 +17,7 @@ i18n
     debug: isDev,
 
     backend: {
-      loadPath: 'locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
 
     interpolation: {

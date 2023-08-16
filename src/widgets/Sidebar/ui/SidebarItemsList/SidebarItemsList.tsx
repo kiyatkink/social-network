@@ -1,8 +1,8 @@
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
-import { sidebarItemListConfig } from '../../config/sidebarItemListConfig';
+import { sidebarItemListConfig, SidebarItemPropsAndParams } from '../../config/sidebarItemListConfig';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarItemsListProps {
@@ -11,27 +11,29 @@ interface SidebarItemsListProps {
 export const SidebarItemsList: FC<SidebarItemsListProps> = memo((props: SidebarItemsListProps) => {
   const { collapsed } = props
   const isAuth = Boolean(useSelector(getUserData))
+
+  const renderItem = useCallback((value: SidebarItemPropsAndParams) => {
+    const { path, label, Icon } = value
+
+    return (
+      <SidebarItem
+        path={path}
+        theme={AppLinkTheme.INVERTED_PRIMARY}
+        label={label}
+        Icon={Icon}
+        collapsed={collapsed}
+        key={path}
+      />
+    )
+  }, [collapsed])
+
   return (
     <>
       {Object.entries(sidebarItemListConfig).map(([key, value]) => {
-        const {
-          path, label, Icon, onlyAuth,
-        } = value
-
-        if (onlyAuth && !isAuth) {
+        if (value.onlyAuth && !isAuth) {
           return null
         }
-
-        return (
-          <SidebarItem
-            path={path}
-            theme={AppLinkTheme.INVERTED_PRIMARY}
-            label={label}
-            Icon={Icon}
-            collapsed={collapsed}
-            key={key}
-          />
-        )
+        return renderItem(value)
       })}
     </>
   )
