@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import avatar from 'shared/assets/tests/storybook.jpg'
+import avatar from 'shared/assets/tests/black.jpg'
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfileCard, ProfileData } from './ProfileCard';
