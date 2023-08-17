@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 function AboutPage() {
   const { t } = useTranslation('about');
@@ -9,4 +10,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default memo(AboutPage);

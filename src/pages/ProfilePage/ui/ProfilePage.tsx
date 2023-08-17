@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { EditableProfileCard } from 'features/EditableProfileCard';
 import cls from './ProfilePage.module.scss'
@@ -16,4 +16,4 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
   );
 };
 
-export default ProfilePage
+export default memo(ProfilePage)

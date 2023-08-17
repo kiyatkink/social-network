@@ -6,6 +6,7 @@ import { AnyAction, ReducersMapObject } from '@reduxjs/toolkit';
 import { CombinedState, Reducer } from 'redux';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
+import { ArticleSchema } from 'entities/Article';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -14,6 +15,7 @@ export interface StoreSchema {
     // Асинхронные редюсеры
     loginUser?: LoginUserSchema
     profile?: ProfileSchema
+    article?: ArticleSchema
 }
 
 export type StoreSchemaKeys = keyof StoreSchema

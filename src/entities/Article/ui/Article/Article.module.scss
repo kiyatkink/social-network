@@ -1,0 +1,15 @@
+.Article {
+}
+
+.avatar_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ArticleIsLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}

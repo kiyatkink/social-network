@@ -1,5 +1,6 @@
 import { Counter } from 'entities/Counter';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 function MainPage() {
   const { t } = useTranslation('main');
@@ -11,4 +12,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default memo(MainPage);
