@@ -3,7 +3,9 @@ import { ThunkApiConfig } from 'app/StoreProvider/types/StoreSchema';
 import { ProfileData } from 'entities/Profile'
 import { ServerErrors, ValidationErrors } from '../../types/ProfileSchema';
 
-export const fetchProfileData = createAsyncThunk<ProfileData, void, ThunkApiConfig<Array<ValidationErrors | ServerErrors>>>(
+export const fetchProfileData = createAsyncThunk<
+    ProfileData, void, ThunkApiConfig<Array<ValidationErrors | ServerErrors>>
+>(
   'profile/fetchProfileData',
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI

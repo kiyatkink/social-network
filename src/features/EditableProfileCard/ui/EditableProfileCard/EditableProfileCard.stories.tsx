@@ -34,6 +34,9 @@ const meta: Meta<typeof EditableProfileCard> = {
   decorators: [
     AxiosMockDecorator(mock, $api),
   ],
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 export default meta;

@@ -1,0 +1,15 @@
+.ArticleCodeBlock {
+  border: 1px solid var(--inverted-bg-color);
+  background-color: var(--code-bg);
+  font: var(--font-m);
+  padding: 20px;
+  margin-bottom: var(--margin-bottom-article-bloks);
+  position: relative;
+  overflow: auto;
+}
+
+.copy_btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

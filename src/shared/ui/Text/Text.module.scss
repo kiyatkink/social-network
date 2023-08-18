@@ -1,4 +1,8 @@
 .Text {
+}
+
+// TextSize
+.size_m {
   .title {
     font: var(--font-l);
   }
@@ -7,6 +11,18 @@
     font: var(--font-m);
   }
 }
+
+.size_l {
+  .title {
+    font: var(--font-xl);
+  }
+
+  .text {
+    font: var(--font-l);
+  }
+}
+
+// TextThems
 
 .primary {
   .title {
@@ -26,4 +42,22 @@
   .text {
     color: var(--error-color-text)
   }
+}
+
+// TextAlign
+
+.text_left {
+  text-align: left;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.text_justify {
+  text-align: justify;
 }

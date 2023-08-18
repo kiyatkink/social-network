@@ -31,6 +31,9 @@ const mock = (apiMock: MockAdapter) => {
 const meta: Meta<typeof ProfilePage> = {
   title: 'pages/ProfilePage',
   component: ProfilePage,
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 export default meta;

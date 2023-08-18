@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useTranslation } from 'react-i18next';
-import { Text, TextThems } from './Text';
+import {
+  Text, TextAlign, TextSize, TextThems,
+} from './Text';
 
 const meta: Meta<typeof Text> = {
   title: 'shared/Text',
@@ -41,5 +43,37 @@ export const TitleWithoutText: Story = {
 export const TextWithoutTitle: Story = {
   args: {
     text: 'Много много текста',
+  },
+};
+
+export const TextSizeL: Story = {
+  args: {
+    title: 'Заголовок',
+    text: 'Много много текста',
+    size: TextSize.L,
+  },
+};
+
+export const TextAlignCenter: Story = {
+  args: {
+    title: 'Заголовок',
+    text: 'Много много текста',
+    textAlign: TextAlign.CENTER,
+  },
+};
+
+export const TextAlignRight: Story = {
+  args: {
+    title: 'Заголовок',
+    text: 'Много много текста',
+    textAlign: TextAlign.RIGHT,
+  },
+};
+
+export const TextAlignJustify: Story = {
+  args: {
+    title: 'Заголовок',
+    text: 'Много много текста',
+    textAlign: TextAlign.JUSTIFY,
   },
 };

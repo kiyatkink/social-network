@@ -10,7 +10,7 @@ export interface ArticleBlockBase {
 
 export interface ArticleTextBlock extends ArticleBlockBase{
     type: ArticleBlockType.TEXT,
-    title: string,
+    title?: string,
     paragraphs: string[]
 }
 

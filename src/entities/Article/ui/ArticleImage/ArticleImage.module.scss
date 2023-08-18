@@ -1,0 +1,13 @@
+.ArticleImageBlock {
+  margin-bottom: var(--margin-bottom-article-bloks);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.img {
+  object-fit: scale-down;
+  max-width: 100%;
+}

@@ -1,4 +1,9 @@
-.Link {}
+.Link {
+  &:hover {
+    opacity: 0.7;
+  }
+
+}
 
 .primary {
   color: var(--primary-color);

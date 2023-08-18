@@ -13,3 +13,28 @@
   justify-content: center;
   gap: 28px;
 }
+
+.avatar_mb {
+  margin-bottom: var(--margin-bottom-article-bloks);
+}
+
+.subtitle {
+  margin-bottom: var(--margin-bottom-article-bloks);
+}
+
+.about_article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &_text {
+    margin-top: 5px;
+  }
+}
+
+.ArticleHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 24px;
+}

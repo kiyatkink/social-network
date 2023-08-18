@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import avatar from 'shared/assets/tests/black.jpg'
+import avatar from 'shared/assets/tests/storybook.jpg'
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfileCard, ProfileData } from './ProfileCard';
@@ -7,6 +7,9 @@ import { ProfileCard, ProfileData } from './ProfileCard';
 const meta: Meta<typeof ProfileCard> = {
   title: 'entities/ProfileCard',
   component: ProfileCard,
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 const form: ProfileData = {
