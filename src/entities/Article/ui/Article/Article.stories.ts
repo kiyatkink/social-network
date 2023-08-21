@@ -47,6 +47,9 @@ const meta: Meta<typeof Article> = {
   decorators: [
     AxiosMockDecorator(mock, $api),
   ],
+  parameters: {
+    loki: { skip: true },
+  },
 };
 
 export default meta;
