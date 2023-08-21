@@ -16,13 +16,10 @@ export class ThunkActionCreator<Returned, ThunkArg, RejectedValue> {
 
   getState: () => StoreSchema;
 
-  constructor(actionCreator: ActionCreatorType<Returned, ThunkArg, RejectedValue>, axiosInstance?: AxiosInstance) {
+  constructor(actionCreator: ActionCreatorType<Returned, ThunkArg, RejectedValue>) {
     this.actionCreator = actionCreator
     this.dispatch = jest.fn()
     this.getState = jest.fn()
-    if (axiosInstance) {
-      this.mockedAxios = axiosInstance as jest.Mocked<typeof axios>
-    }
   }
 
   async callAction(arg: ThunkArg) {
