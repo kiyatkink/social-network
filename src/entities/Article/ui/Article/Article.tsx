@@ -66,7 +66,7 @@ export const Article: FC<ArticleProps> = memo((props: ArticleProps) => {
         <Skeleton width="44vw" height="3vh" />
         <Skeleton width="26vw" height="3vh" />
         <Skeleton width="100%" height="23vh" />
-        <Skeleton width="100%" height="23vh" />
+        <Skeleton className={cls.last_skeleton} width="100%" height="23vh" />
       </div>
     );
   }

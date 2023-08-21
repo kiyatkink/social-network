@@ -7,6 +7,7 @@ import { CombinedState, Reducer } from 'redux';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
 import { ArticleSchema } from 'entities/Article';
+import { CommentsSchema } from 'features/ArticleCommentsBlock';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -16,6 +17,7 @@ export interface StoreSchema {
     loginUser?: LoginUserSchema
     profile?: ProfileSchema
     article?: ArticleSchema
+    comments?: CommentsSchema
 }
 
 export type StoreSchemaKeys = keyof StoreSchema

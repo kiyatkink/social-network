@@ -20,6 +20,7 @@ module.exports = {
         'i18next/no-literal-string': 'off',
         'max-len': 'off',
         'react-hooks/rules-of-hooks': 'off',
+        'react-hooks/exhaustive-deps': 'warn',
       },
     },
   ],

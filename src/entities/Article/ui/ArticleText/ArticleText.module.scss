@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: var(--margin-bottom-article-bloks);
 }
 
 .title {
-  text-indent: 40px;
   margin-bottom: var(--margin-bottom-article-bloks);
 }
 
 .paragraph {
-  text-indent: 40px;
+  margin-bottom: var(--margin-bottom-article-bloks);
 }

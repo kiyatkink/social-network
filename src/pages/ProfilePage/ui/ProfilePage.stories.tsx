@@ -5,8 +5,9 @@ import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDeco
 import avatar from 'shared/assets/tests/storybook.jpg';
 import ProfilePage from './ProfilePage';
 
+const pathRegex = /\/profiles\/*/;
 const mock = (apiMock: MockAdapter) => {
-  apiMock.onGet('/profile').reply(200, {
+  apiMock.onGet(pathRegex).reply(200, {
     first: 'Кирилл',
     lastname: 'Кияткин',
     age: 23,
@@ -16,7 +17,7 @@ const mock = (apiMock: MockAdapter) => {
     username: 'admin',
     avatar,
   });
-  apiMock.onPut('/profile').reply(200, {
+  apiMock.onPut(pathRegex).reply(200, {
     first: 'Кирилл',
     lastname: 'Кияткин',
     age: 23,

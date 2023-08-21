@@ -1,16 +1,4 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "userId": 1
-    },
-    {
-      "id": 2,
-      "title": "json-server",
-      "userId": 2
-    }
-  ],
   "articles": [
     {
       "id": "1",
@@ -19,7 +7,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -82,28 +72,47 @@
       ]
     }
   ],
-  "comments": [
+  "articlesComments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "articleId": "1",
+      "comments": [
+        {
+          "id": "1",
+          "text": "some comment",
+          "userId": "1"
+        },
+        {
+          "id": "2",
+          "text": "some comment",
+          "userId": "1"
+        },
+        {
+          "id": "3",
+          "text": "some comment",
+          "userId": "1"
+        }
+      ]
     }
   ],
   "users": [
     {
       "id": "1",
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "profileId": "1"
     }
   ],
-  "profile": {
-    "first": "Кирилл",
-    "lastname": "Кияткин",
-    "age": 23,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Omsk",
-    "username": "admin",
-    "avatar": "https://memepedia.ru/wp-content/uploads/2019/03/tuxedo-winnie.jpg"
-  }
+  "profiles": [
+    {
+      "id": "1",
+      "first": "Кирилл",
+      "lastname": "Кияткин",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Omsk",
+      "username": "admin",
+      "avatar": "https://memepedia.ru/wp-content/uploads/2019/03/tuxedo-winnie.jpg"
+    }
+  ]
 }

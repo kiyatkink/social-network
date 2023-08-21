@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDecorator';
+import jsImg from 'shared/assets/tests/storybook_js.png';
+import consoleImg from 'shared/assets/tests/storybook_console.png';
 import { $api } from 'shared/api/api';
 import { Article } from './Article';
 
@@ -10,7 +12,7 @@ const mock = (apiMock: MockAdapter) => {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2023 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: jsImg,
     views: 1022,
     createdAt: '26.02.2023',
     type: ['IT'],
@@ -27,12 +29,12 @@ const mock = (apiMock: MockAdapter) => {
       {
         'id': '4',
         'type': 'CODE',
-        'code': '<!DOCTYPE html>\n<html>\n  <body>\n    <p id=`hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
+        'code': '<!DOCTYPE html>\n<html lang="aa">\n  <body>\n    <p id=`hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
       },
       {
         'id': '2',
         'type': 'IMAGE',
-        'src': 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+        'src': consoleImg,
         'title': 'Рисунок 1 - скриншот сайта',
       },
     ],
@@ -45,9 +47,6 @@ const meta: Meta<typeof Article> = {
   decorators: [
     AxiosMockDecorator(mock, $api),
   ],
-  parameters: {
-    loki: { skip: true },
-  },
 };
 
 export default meta;

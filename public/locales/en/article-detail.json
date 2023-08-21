@@ -1,5 +1,8 @@
 {
   "Статья не найдена": "Article not found",
   "Не удалось получить статью": "Failed to get article",
-  "Аватар": "Avatar"
+  "Аватар": "Avatar",
+  "Комментарии": "Comments",
+  "Не удалось загрузить комментарии": "Failed to load comments",
+  "Комментарии отсутствуют": "No comments"
 }
