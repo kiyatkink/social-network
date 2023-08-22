@@ -1,7 +1,11 @@
 import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { EditableProfileCard } from 'features/EditableProfileCard';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import cls from './ProfilePage.module.scss'
+import { Text, TextThems } from '../../../shared/ui/Text/Text';
+import { getCanEdit } from '../model/selectors/getCanEdit/getCanEdit';
 
 interface ProfilePageProps {
     className?: string
@@ -9,9 +13,23 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = (props) => {
   const { className } = props
+  const { id } = useParams<{ id: string }>()
+  const canEdit = useSelector((state) => getCanEdit(state, id));
+
+  if (!id) {
+    return (
+      <div className={classNames(cls.ProfilePage, {}, [className])}>
+        <Text
+          theme={TextThems.ERROR}
+          text="Отсутствует id пользователя"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={classNames(cls.ProfilePage, {}, [className])}>
-      <EditableProfileCard />
+      <EditableProfileCard profileId={id} canEdit={canEdit} />
     </div>
   );
 };

@@ -77,12 +77,14 @@ server.get('/article_comments/:id', (req, res) => {
         )
 
         const avatar = userProfile.avatar
+        const profileId = userProfile.id
 
         return {
           id: comment.id,
           text: comment.text,
           username,
           avatar,
+          profileId,
         }
       })
       return res.json(resultComments);

@@ -5,6 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkSizes, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutesPath } from 'shared/config/routerConfig/routerConfig';
+import { Icon } from 'shared/ui/Icon/Icon';
 import cls from './SidebarItem.module.scss'
 
 export interface SidebarItemProps {
@@ -12,7 +13,7 @@ export interface SidebarItemProps {
     path: RoutesPath,
     theme?: AppLinkTheme,
     label: string,
-    Icon: VFC<SVGProps<SVGSVGElement>>,
+    Svg: VFC<SVGProps<SVGSVGElement>>,
     collapsed?: boolean,
 }
 
@@ -22,7 +23,7 @@ export const SidebarItem: FC<SidebarItemProps> = memo((props: SidebarItemProps) 
     path,
     theme,
     label,
-    Icon,
+    Svg,
     collapsed,
   } = props
   const { t } = useTranslation();
@@ -34,7 +35,7 @@ export const SidebarItem: FC<SidebarItemProps> = memo((props: SidebarItemProps) 
       theme={theme}
       size={AppLinkSizes.M}
     >
-      <Icon className={cls.IconSize} />
+      <Icon Svg={Svg} width="30px" height="30px" />
       { collapsed ? '' : t(`${label}`)}
     </AppLink>
   );

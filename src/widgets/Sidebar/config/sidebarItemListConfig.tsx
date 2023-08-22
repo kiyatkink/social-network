@@ -5,37 +5,25 @@ import ProfilePageIcon from 'shared/assets/profile.svg'
 import ArticlesPageIcon from 'shared/assets/articles-icon.svg'
 import { SidebarItemProps } from '../ui/SidebarItem/SidebarItem';
 
-export enum Items {
-    ABOUT = 'about',
-    MAIN = 'main',
-    PROFILE = 'profile',
-    ARTICLES = 'articles',
-}
-
-export interface SidebarItemPropsAndParams extends SidebarItemProps {
-  onlyAuth?: boolean
-}
-export const sidebarItemListConfig: Record<Items, SidebarItemPropsAndParams> = {
-  [Routes.MAIN]: {
+export const sidebarItemListConfig: SidebarItemProps[] = [
+  {
     path: RoutesPaths[Routes.MAIN],
     label: 'Главная',
-    Icon: MainPageIcon,
+    Svg: MainPageIcon,
   },
-  [Routes.ABOUT]: {
+  {
     path: RoutesPaths[Routes.ABOUT],
     label: 'О сайте',
-    Icon: AboutPageIcon,
+    Svg: AboutPageIcon,
   },
-  [Routes.PROFILE]: {
+  {
     path: RoutesPaths[Routes.PROFILE],
     label: 'Профиль',
-    Icon: ProfilePageIcon,
-    onlyAuth: true,
+    Svg: ProfilePageIcon,
   },
-  [Routes.ARTICLES]: {
+  {
     path: RoutesPaths[Routes.ARTICLES],
     label: 'Статьи',
-    Icon: ArticlesPageIcon,
-    onlyAuth: true,
+    Svg: ArticlesPageIcon,
   },
-} as const
+]

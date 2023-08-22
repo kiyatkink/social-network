@@ -23,10 +23,12 @@ import { ServerErrors, ValidationErrors } from '../../model/types/ProfileSchema'
 
 interface EditableProfileCardProps {
     className?: string
+    profileId: string,
+    canEdit: boolean,
 }
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: EditableProfileCardProps) => {
-  const { className } = props
+  const { className, profileId, canEdit } = props
   const dispatch = useDispatch()
   const { t } = useTranslation('profile')
 
@@ -39,8 +41,8 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
   useAsyncReducer('profile', profileReducer)
 
   useEffect(() => {
-    dispatch(fetchProfileData())
-  }, [dispatch]);
+    dispatch(fetchProfileData(profileId))
+  }, [dispatch, profileId]);
 
   const validateErrorTranslates = {
     [ValidationErrors.EMPTY_FIRSTNAME]: t('Поле имя не должно быть пустым'),
@@ -118,6 +120,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
         saveHandler={saveHandler}
         readonly={readonly}
         isLoading={isLoading}
+        canEdit={canEdit}
       />
       <ProfileCard
         form={form}

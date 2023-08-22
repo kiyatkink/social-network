@@ -16,10 +16,10 @@ export enum Routes {
 }
 export const RoutesPaths: Record<Routes, string> = {
   [Routes.ABOUT]: '/about',
-  [Routes.PROFILE]: '/profile',
+  [Routes.PROFILE]: '/profile/', // :id
   [Routes.MAIN]: '/',
   [Routes.ARTICLES]: '/articles',
-  [Routes.ARTICLE_DETAIL]: '/articles/',
+  [Routes.ARTICLE_DETAIL]: '/articles/', // :id
   [Routes.NOT_FOUND]: '*',
 } as const;
 
@@ -32,7 +32,7 @@ export const routeConfig: Record<Routes, RoutePropsWithAuth> = {
     element: <AboutPage />,
   },
   [Routes.PROFILE]: {
-    path: RoutesPaths[Routes.PROFILE],
+    path: `${RoutesPaths[Routes.PROFILE]}:id`,
     element: <ProfilePage />,
     onlyAuth: true,
   },

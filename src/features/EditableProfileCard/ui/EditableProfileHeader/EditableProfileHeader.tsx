@@ -12,6 +12,7 @@ interface EditableProfileHeaderProps {
     cancelHandler?: () => void,
     readonly: boolean
     isLoading?: boolean
+    canEdit: boolean
 }
 
 export const EditableProfileHeader: FC<EditableProfileHeaderProps> = memo((props: EditableProfileHeaderProps) => {
@@ -22,12 +23,14 @@ export const EditableProfileHeader: FC<EditableProfileHeaderProps> = memo((props
     editHandler,
     readonly,
     isLoading = false,
+    canEdit,
   } = props
   const { t } = useTranslation('profile')
 
   return (
     <div className={classNames(cls.EditableProfileHeader, {}, [className])}>
       <Text title={t('Пользователь')} />
+      { canEdit && (
       <div className={cls.btn_wrap}>
         {
           readonly ? (
@@ -63,6 +66,7 @@ export const EditableProfileHeader: FC<EditableProfileHeaderProps> = memo((props
               )
         }
       </div>
+)}
     </div>
   );
 });

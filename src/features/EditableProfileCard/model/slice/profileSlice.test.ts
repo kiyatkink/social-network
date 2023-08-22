@@ -60,14 +60,14 @@ describe('profileSlice tests', () => {
     const store: DeepPartial<ProfileSchema> = {
       isLoading: true,
     };
-    expect(profileReducer(store as ProfileSchema, fetchProfileData.fulfilled({}, ''))).toEqual({ isLoading: false, data: {}, form: {} })
+    expect(profileReducer(store as ProfileSchema, fetchProfileData.fulfilled({}, '', ''))).toEqual({ isLoading: false, data: {}, form: {} })
   })
 
   test('fetchProfileData.rejected action', () => {
     const store: DeepPartial<ProfileSchema> = {
       isLoading: true,
     };
-    expect(profileReducer(store as ProfileSchema, fetchProfileData.rejected(new Error(), '', undefined, [ServerErrors.FAILED_TO_GET_DATA]))).toEqual({ isLoading: false, errors: [ServerErrors.FAILED_TO_GET_DATA] })
+    expect(profileReducer(store as ProfileSchema, fetchProfileData.rejected(new Error(), '', '', [ServerErrors.FAILED_TO_GET_DATA]))).toEqual({ isLoading: false, errors: [ServerErrors.FAILED_TO_GET_DATA] })
   })
 
   test('updateProfileData.pending action', () => {
