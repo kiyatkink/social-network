@@ -11,5 +11,14 @@
   "Страна": "Country",
   "Имя пользователя": "Username",
   "Аватар": "Avatar",
-  "Город": "City"
+  "Город": "City",
+  "Поле имя не должно быть пустым": "The name field must not be empty",
+  "Поле фамилии не должно быть пустым": "Last name field must not be empty",
+  "Поле возраст должно быть целым": "The age field must be an integer",
+  "Поле возраст не должно быть равно нулю": "Поле возраст не должно быть равно нулю",
+  "Поле город не должно быть пустым": "Age field must not be zero",
+  "Поле имя пользователя не должно быть пустым": "Username field must not be empty",
+  "Поле аватар должно быть ссылкой на картинку": "The avatar field must be a link to an image",
+  "Не удалось загрузить данные о профиле": "Failed to load profile data",
+  "Не удалось сохранить данные": "Failed to save data"
 }
