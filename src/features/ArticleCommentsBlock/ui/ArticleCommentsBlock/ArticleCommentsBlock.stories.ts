@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDecorator';
 import { $api } from 'shared/api/api';
 import avatar from 'shared/assets/tests/storybook.jpg';
-import { ArticleCommentsBlock } from './ArticleCommentsBlock';
+import ArticleCommentsBlock from './ArticleCommentsBlock';
 
 const pathRegex = /\/article_comments\/*/;
 const mockSuccess = (apiMock: MockAdapter) => {

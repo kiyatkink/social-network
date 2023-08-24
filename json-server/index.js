@@ -60,7 +60,7 @@ server.get('/article_comments/:id', (req, res) => {
     console.log(id)
 
     const articleCommentsFromBd = articlesComments.find(
-        (articleComments) => articleComments.articleId === id,
+        (articleComments) => articleComments.id === id,
     );
 
     if (articleCommentsFromBd) {
@@ -91,6 +91,55 @@ server.get('/article_comments/:id', (req, res) => {
     }
 
     return res.status(403).json({ message: 'Failed to get comments' });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+  }
+});
+
+// Эндпоинт для добавления нового комментария
+server.post('/article_comments/:id', (req, res) => {
+  try {
+    const { id } = req.params
+    const { text, userId } = req.body;
+
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+
+    const { articlesComments = [] } = db;
+
+    console.log(id)
+
+    const articleCommentsFromBd = articlesComments.find(
+        (articleComments) => articleComments.id === id,
+    );
+
+    if (articleCommentsFromBd) {
+      // Записали новый коммент в бд
+      const id = `${articleCommentsFromBd.comments.length + 1}`
+      articleCommentsFromBd.comments.push({ id, text, userId })
+      fs.writeFile(path.resolve(__dirname, 'db.json'), JSON.stringify(db, null, 4), (error) => {
+        if (error) {
+          console.log('An error has occurred ', error);
+          return;
+        }
+      })
+
+      // Формируем нормальный ответ
+      const userWhoCreatedComment = db.users.find(
+          (user) => user.id === userId,
+      )
+      const username = userWhoCreatedComment.username
+      const userProfile = db.profiles.find(
+          (profile) => profile.id === userWhoCreatedComment.profileId,
+      )
+      const avatar = userProfile.avatar
+      const profileId = userProfile.id
+
+
+      return res.json({ id, text, username, profileId, avatar });
+    }
+
+    return res.status(403).json({ message: 'Failed write comment' });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: e.message });

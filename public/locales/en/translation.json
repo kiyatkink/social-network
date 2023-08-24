@@ -13,5 +13,10 @@
   "Пользователь не найден": "User not found",
   "Выйти": "Exit",
   "Валюта": "Currency",
-  "Статьи": "Articles"
+  "Статьи": "Articles",
+  "Введите текст комментария": "Enter comment text",
+  "Отправить": "Send",
+  "Не удалось отправить комментарий": "Failed to post comment",
+  "Комментарий не должен быть пустым": "Comment must not be empty",
+  "Не удалось сохранить комментарий": "Failed to save comment"
 }

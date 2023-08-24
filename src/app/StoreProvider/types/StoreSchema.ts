@@ -8,6 +8,7 @@ import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
 import { ArticleSchema } from 'entities/Article';
 import { CommentsSchema } from 'features/ArticleCommentsBlock';
+import { NewCommentSchema } from 'features/AddNewComment';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -18,6 +19,7 @@ export interface StoreSchema {
     profile?: ProfileSchema
     article?: ArticleSchema
     comments?: CommentsSchema
+    newComment?: NewCommentSchema
 }
 
 export type StoreSchemaKeys = keyof StoreSchema

@@ -1,13 +1,13 @@
-import {
-  createEntityAdapter, createSlice, EntityState,
-} from '@reduxjs/toolkit'
+import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit'
 import { Comment } from 'entities/Comment';
 import { StoreSchema } from 'app/StoreProvider';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { CommentsSchema } from '../types/CommentsSchema';
+import { sendNewComment } from '../services/sendNewComment/sendNewComment';
 
 const commentsAdapter = createEntityAdapter<Comment>({
   selectId: (comment) => comment.id,
+  sortComparer: (a, b) => +b.id - +a.id,
 })
 
 export const commentsSelectors = commentsAdapter.getSelectors<StoreSchema>(
@@ -36,6 +36,9 @@ export const commentsSlice = createSlice({
       .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
+      })
+      .addCase(sendNewComment.fulfilled, (state, action) => {
+        commentsAdapter.addOne(state, action.payload);
       })
   },
 })

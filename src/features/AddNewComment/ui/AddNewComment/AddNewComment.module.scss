@@ -1,0 +1,27 @@
+.AddNewComment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main {
+  border: 1px solid var(--inverted-bg-color);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.footer {
+  margin-top: 5px;
+}
+
+.input {
+  flex-grow: 1;
+}
+
+.btn {
+  padding: 5px 10px;
+  min-width: 100px;
+}
