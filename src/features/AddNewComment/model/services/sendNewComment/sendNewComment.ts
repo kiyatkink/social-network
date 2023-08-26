@@ -11,7 +11,7 @@ export const sendNewComment = createAsyncThunk<void, SendFunctionType, ThunkApiC
   'newComment/newCommentSender',
   async (sendFunction, thunkAPI) => {
     const {
-      rejectWithValue, extra, dispatch, getState,
+      rejectWithValue, dispatch, getState,
     } = thunkAPI
     try {
       const newComment = getNewCommentText(getState() as StoreSchema)

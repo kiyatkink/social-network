@@ -1,6 +1,4 @@
-import {
-  FC, memo, useCallback, useEffect,
-} from 'react';
+import { FC, memo, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { CommentsList, SkeletonCommentsList } from 'entities/Comment';
 import { Text, TextSize, TextThems } from 'shared/ui/Text/Text'

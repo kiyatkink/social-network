@@ -4,11 +4,10 @@ import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDeco
 import { $api } from 'shared/api/api';
 import avatar from 'shared/assets/tests/storybook.jpg';
 import { DeepPartial } from '@reduxjs/toolkit';
+import { StoreSchema } from 'app/StoreProvider';
+import { StoreDecorator } from 'shared/lib/storybookDecorators/StoreDecorator';
+import jsImg from 'shared/assets/tests/storybook_js.png';
 import ArticleCommentsBlock from './ArticleCommentsBlock';
-import { StoreSchema } from '../../../../app/StoreProvider';
-import { StoreDecorator } from '../../../../shared/lib/storybookDecorators/StoreDecorator';
-import jsImg from '../../../../shared/assets/tests/storybook_js.png';
-import consoleImg from '../../../../shared/assets/tests/storybook_console.png';
 
 const pathRegex = /\/article_comments\/*/;
 const mockSuccess = (apiMock: MockAdapter) => {
