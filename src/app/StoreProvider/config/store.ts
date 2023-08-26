@@ -6,7 +6,10 @@ import { CombinedState, Reducer } from 'redux';
 import { ReducerManager, StoreSchema, StoreWithReducerManager } from '../types/StoreSchema';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialStore?: StoreSchema, asyncReducers?: Partial<Record<keyof StoreSchema, Reducer>>) {
+export function createReduxStore(
+  initialStore?: StoreSchema,
+  asyncReducers?: Partial<Record<keyof StoreSchema, Reducer>>,
+) {
   const isDev = process.env.MODE === 'development'
 
   const staticReducers: ReducersMapObject<StoreSchema> = {

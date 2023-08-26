@@ -1,4 +1,4 @@
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { DeepPartial } from '@reduxjs/toolkit';
 import { FC, ReactNode } from 'react';
 import { Provider } from 'react-redux'
 import { Reducer } from 'redux';
