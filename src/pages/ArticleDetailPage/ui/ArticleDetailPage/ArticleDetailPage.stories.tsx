@@ -5,31 +5,15 @@ import { $api } from 'shared/api/api';
 import avatar from 'shared/assets/tests/storybook.jpg';
 import jsImg from 'shared/assets/tests/storybook_js.png';
 import consoleImg from 'shared/assets/tests/storybook_console.png';
-import { StoryFn } from '@storybook/react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { RouteDecorator } from 'shared/lib/storybookDecorators/RouteDecorator';
 import ArticleDetailPage from './ArticleDetailPage';
 
 const meta: Meta<typeof ArticleDetailPage> = {
   title: 'pages/ArticleDetailPage',
   component: ArticleDetailPage,
   decorators: [
-    (StoryComponent: StoryFn) => (
-      <Routes>
-        <Route path="/articles/:id" element={<StoryComponent />} />
-      </Routes>
-    ),
-    (StoryComponent: StoryFn) => {
-      const navigate = useNavigate()
-      useEffect(() => {
-        navigate('/articles/1')
-      }, []);
-      return <StoryComponent />
-    },
+    RouteDecorator('/articles/:id', '/articles/1'),
   ],
-  parameters: {
-    loki: { skip: true },
-  },
 };
 
 const pathCommentsRegex = /\/article_comments\/*/;

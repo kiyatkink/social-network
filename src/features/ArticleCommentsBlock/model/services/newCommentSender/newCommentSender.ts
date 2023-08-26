@@ -7,7 +7,10 @@ import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { Dispatch } from '@reduxjs/toolkit';
 import { commentsActions } from '../../slice/commentsSlice';
 
-export const newCommentSender: SenderFnType = async (newComment: string, thunkAPI: BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>) => {
+export const newCommentSender: SenderFnType = async (
+  newComment: string,
+  thunkAPI: BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>,
+) => {
   const { extra, dispatch, getState } = thunkAPI
 
   const userId = getUserData(getState() as StoreSchema)?.id

@@ -7,6 +7,8 @@ import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
 import { StoreDecorator } from 'shared/lib/storybookDecorators/StoreDecorator';
 import jsImg from 'shared/assets/tests/storybook_js.png';
+import { articleReducer } from 'entities/Article';
+import { Reducer } from 'redux';
 import ArticleCommentsBlock from './ArticleCommentsBlock';
 
 const pathRegex = /\/article_comments\/*/;
@@ -41,17 +43,13 @@ const mockSuccess = (apiMock: MockAdapter) => {
       ]]);
     }, 1000);
   }));
-  apiMock.onPost(pathRegex).reply(() => new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([201, {
-        id: '1',
-        text: 'Новый комментарий, который ты только что добавил',
-        username: 'cool_man',
-        profileId: '1',
-        avatar,
-      }]);
-    }, 500);
-  }));
+  apiMock.onPost(pathRegex).reply(201, {
+    id: '1',
+    text: 'Новый комментарий, который ты только что добавил',
+    username: 'cool_man',
+    profileId: '1',
+    avatar,
+  });
 };
 
 const mockSuccessEmptyComments = (apiMock: MockAdapter) => {
@@ -69,7 +67,6 @@ const mockError = (apiMock: MockAdapter) => {
   }));
 };
 
-// TODO: artticle здесь не прокидывается, возникает ошибка
 const initialStore: DeepPartial<StoreSchema> = {
   user: {
     authData: {
@@ -92,6 +89,10 @@ const initialStore: DeepPartial<StoreSchema> = {
   },
 }
 
+const asyncReducers: Partial<Record<keyof StoreSchema, Reducer>> = {
+  article: articleReducer,
+}
+
 const meta: Meta<typeof ArticleCommentsBlock> = {
   title: 'features/ArticleCommentsBlock',
   component: ArticleCommentsBlock,
@@ -99,7 +100,7 @@ const meta: Meta<typeof ArticleCommentsBlock> = {
     loki: { skip: true },
   },
   decorators: [
-    StoreDecorator(initialStore),
+    StoreDecorator(initialStore, asyncReducers),
   ],
 };
 export default meta;

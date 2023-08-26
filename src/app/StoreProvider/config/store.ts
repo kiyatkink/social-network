@@ -2,16 +2,17 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api'
-import { CombinedState } from 'redux';
+import { CombinedState, Reducer } from 'redux';
 import { ReducerManager, StoreSchema, StoreWithReducerManager } from '../types/StoreSchema';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialStore?: StoreSchema) {
+export function createReduxStore(initialStore?: StoreSchema, asyncReducers?: Partial<Record<keyof StoreSchema, Reducer>>) {
   const isDev = process.env.MODE === 'development'
 
   const staticReducers: ReducersMapObject<StoreSchema> = {
     counter: counterReducer,
     user: userReducer,
+    ...asyncReducers,
   }
 
   const reducerManager: ReducerManager = createReducerManager(staticReducers)
