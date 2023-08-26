@@ -44,4 +44,15 @@ export default meta;
 type Story = StoryObj<typeof EditableProfileCard>;
 
 export const Default: Story = {
+  args: {
+    profileId: '1',
+    canEdit: true,
+  },
+};
+
+export const NotCanEdit: Story = {
+  args: {
+    profileId: '1',
+    canEdit: false,
+  },
 };

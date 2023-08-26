@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import avatar from 'shared/assets/tests/storybook.jpg'
 import { CommentsList } from './CommentsList';
-import avatar from '../../../../shared/assets/tests/storybook.jpg'
 
 const meta: Meta<typeof CommentsList> = {
   title: 'entities/CommentsList',

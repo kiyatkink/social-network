@@ -3,7 +3,12 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDecorator';
 import { $api } from 'shared/api/api';
 import avatar from 'shared/assets/tests/storybook.jpg';
+import { DeepPartial } from '@reduxjs/toolkit';
 import ArticleCommentsBlock from './ArticleCommentsBlock';
+import { StoreSchema } from '../../../../app/StoreProvider';
+import { StoreDecorator } from '../../../../shared/lib/storybookDecorators/StoreDecorator';
+import jsImg from '../../../../shared/assets/tests/storybook_js.png';
+import consoleImg from '../../../../shared/assets/tests/storybook_console.png';
 
 const pathRegex = /\/article_comments\/*/;
 const mockSuccess = (apiMock: MockAdapter) => {
@@ -37,6 +42,17 @@ const mockSuccess = (apiMock: MockAdapter) => {
       ]]);
     }, 1000);
   }));
+  apiMock.onPost(pathRegex).reply(() => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([201, {
+        id: '1',
+        text: 'Новый комментарий, который ты только что добавил',
+        username: 'cool_man',
+        profileId: '1',
+        avatar,
+      }]);
+    }, 500);
+  }));
 };
 
 const mockSuccessEmptyComments = (apiMock: MockAdapter) => {
@@ -54,9 +70,38 @@ const mockError = (apiMock: MockAdapter) => {
   }));
 };
 
+// TODO: artticle здесь не прокидывается, возникает ошибка
+const initialStore: DeepPartial<StoreSchema> = {
+  user: {
+    authData: {
+      id: '1',
+      username: 'test',
+    },
+  },
+  article: {
+    data: {
+      id: '1',
+      title: 'Javascript news',
+      subtitle: 'Что нового в JS за 2023 год?',
+      img: jsImg,
+      views: 1022,
+      createdAt: '26.02.2023',
+      type: [],
+      blocks: [],
+    },
+    isLoading: false,
+  },
+}
+
 const meta: Meta<typeof ArticleCommentsBlock> = {
   title: 'features/ArticleCommentsBlock',
   component: ArticleCommentsBlock,
+  parameters: {
+    loki: { skip: true },
+  },
+  decorators: [
+    StoreDecorator(initialStore),
+  ],
 };
 export default meta;
 type Story = StoryObj<typeof ArticleCommentsBlock>;
@@ -73,9 +118,6 @@ export const EmptyComments: Story = {
   decorators: [
     AxiosMockDecorator(mockSuccessEmptyComments, $api),
   ],
-  parameters: {
-    loki: { skip: true },
-  },
 };
 
 export const Error: Story = {
@@ -83,7 +125,4 @@ export const Error: Story = {
   decorators: [
     AxiosMockDecorator(mockError, $api),
   ],
-  parameters: {
-    loki: { skip: true },
-  },
 };

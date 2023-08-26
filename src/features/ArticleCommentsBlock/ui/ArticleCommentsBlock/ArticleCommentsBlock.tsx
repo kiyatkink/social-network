@@ -14,7 +14,7 @@ import { commentsReducer, commentsSelectors } from '../../model/slice/commentsSl
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getCommentsIsLoading } from '../../model/selectors/getCommentsIsLoading/getCommentsIsLoading';
 import { getCommentsError } from '../../model/selectors/getCommentsError/getCommentsError';
-import { sendNewComment } from '../../model/services/sendNewComment/sendNewComment';
+import { newCommentSender } from '../../model/services/newCommentSender/newCommentSender';
 
 interface ArticleCommentsBlockProps {
     className?: string
@@ -34,10 +34,6 @@ const ArticleCommentsBlock: FC<ArticleCommentsBlockProps> = memo((props: Article
   useEffect(() => {
     dispatch(fetchCommentsByArticleId(id))
   }, [dispatch, id]);
-
-  const onSendNewComment = useCallback((value: string) => () => {
-    dispatch(sendNewComment(value))
-  }, [dispatch])
 
   if (isLoading) {
     return (
@@ -60,7 +56,7 @@ const ArticleCommentsBlock: FC<ArticleCommentsBlockProps> = memo((props: Article
   return (
     <div className={classNames(cls.ArticleCommentsBlock, {}, [className])}>
       <Text title={t('Комментарии')} size={TextSize.L} />
-      <AddNewComment sendNewComment={onSendNewComment} />
+      <AddNewComment newCommentSender={newCommentSender} />
       { comments.length ? <CommentsList comments={comments} /> : <Text text={t('Комментарии отсутствуют')} />}
     </div>
   );

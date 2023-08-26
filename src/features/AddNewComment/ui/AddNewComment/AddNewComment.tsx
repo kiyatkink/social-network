@@ -11,14 +11,16 @@ import cls from './AddNewComment.module.scss'
 import { getNewCommentText } from '../../model/selectors/getNewCommentText/getNewCommentText';
 import { getNewCommentIsLoading } from '../../model/selectors/getNewCommentIsLoading/getNewCommentIsLoading';
 import { getNewCommentError } from '../../model/selectors/getNewCommentError/getNewCommentError';
+import { sendNewComment } from '../../model/services/sendNewComment/sendNewComment';
+import { SenderFnType } from '../../model/types/newComment';
 
 interface AddNewCommentProps {
     className?: string
-    sendNewComment: (newComment: string) => () => void
+    newCommentSender: SenderFnType
 }
 
 export const AddNewComment: FC<AddNewCommentProps> = memo((props: AddNewCommentProps) => {
-  const { className, sendNewComment } = props
+  const { className, newCommentSender } = props
 
   useAsyncReducer('newComment', newCommentReducer)
 
@@ -30,9 +32,12 @@ export const AddNewComment: FC<AddNewCommentProps> = memo((props: AddNewCommentP
   const { t } = useTranslation()
 
   const onChangeInputNewComment = useCallback((value: string) => {
-    dispatch(newCommentActions.changeError(''))
     dispatch(newCommentActions.changeText(value))
   }, [dispatch])
+
+  const onSendNewComment = useCallback(() => {
+    dispatch(sendNewComment(newCommentSender))
+  }, [dispatch, newCommentSender])
 
   return (
     <div className={classNames(cls.AddNewComment, {}, [className])}>
@@ -46,7 +51,7 @@ export const AddNewComment: FC<AddNewCommentProps> = memo((props: AddNewCommentP
         <AppButton
           className={cls.btn}
           theme={AppButtonThems.OUTLINE}
-          onClick={sendNewComment(newComment)}
+          onClick={onSendNewComment}
           disabled={isLoading}
         >
           {t('Отправить')}

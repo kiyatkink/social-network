@@ -1,9 +1,11 @@
-import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit'
+import {
+  createEntityAdapter, createSlice, EntityState, PayloadAction,
+} from '@reduxjs/toolkit'
 import { Comment } from 'entities/Comment';
 import { StoreSchema } from 'app/StoreProvider';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { CommentsSchema } from '../types/CommentsSchema';
-import { sendNewComment } from '../services/sendNewComment/sendNewComment';
+import { newCommentSender } from '../services/newCommentSender/newCommentSender';
 
 const commentsAdapter = createEntityAdapter<Comment>({
   selectId: (comment) => comment.id,
@@ -22,7 +24,11 @@ export const commentsSlice = createSlice({
     ids: [],
     entities: {},
   }),
-  reducers: {},
+  reducers: {
+    addOneComment(state, action: PayloadAction<Comment>) {
+      commentsAdapter.addOne(state, action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCommentsByArticleId.pending, (state) => {
@@ -36,9 +42,6 @@ export const commentsSlice = createSlice({
       .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
-      })
-      .addCase(sendNewComment.fulfilled, (state, action) => {
-        commentsAdapter.addOne(state, action.payload);
       })
   },
 })
