@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
+import { StoreDecorator } from 'shared/lib/storybookDecorators/StoreDecorator';
+import { UserMock } from 'entities/User';
 import { Navbar } from './Navbar';
-import { StoreDecorator } from '../../../shared/lib/storybookDecorators/StoreDecorator';
 
 const meta: Meta<typeof Navbar> = {
   title: 'widgets/Navbar',
@@ -18,10 +19,7 @@ export const LogIn: Story = {
 
 const initialStore: DeepPartial<StoreSchema> = {
   user: {
-    authData: {
-      id: '1',
-      username: 'test',
-    },
+    authData: UserMock,
   },
 }
 

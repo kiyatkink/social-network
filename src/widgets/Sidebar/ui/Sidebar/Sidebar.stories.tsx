@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
 import { StoreDecorator } from 'shared/lib/storybookDecorators/StoreDecorator';
+import { UserMock } from 'entities/User';
 import { Sidebar } from './Sidebar';
 
 const meta: Meta<typeof Sidebar> = {
@@ -18,10 +19,7 @@ export const NoLogged: Story = {
 
 const initialStore: DeepPartial<StoreSchema> = {
   user: {
-    authData: {
-      id: '1',
-      username: 'test',
-    },
+    authData: UserMock,
   },
 }
 export const Logged: Story = {

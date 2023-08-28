@@ -1,25 +1,8 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { ArticleSchema } from '../types/articleSchema';
-import {
-  Article, ArticleBlocksType, ArticleBlockType, ArticleType,
-} from '../types/article';
 import { articleReducer } from './articleSlice';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
-
-const data: Article = {
-  id: '1',
-  title: 'string',
-  subtitle: 'string',
-  img: 'string',
-  views: 123,
-  createdAt: 'string',
-  type: [ArticleType.IT],
-  blocks: [{
-    id: 'string',
-    type: ArticleBlockType.CODE,
-    code: 'string',
-  } as ArticleBlocksType],
-}
+import { ArticleMock } from '../../mocks/data';
 
 describe('articleSlice tests', () => {
   test('fetchArticleById pending', () => {
@@ -36,7 +19,7 @@ describe('articleSlice tests', () => {
       data: undefined,
       error: undefined,
     }
-    expect(articleReducer(store as ArticleSchema, fetchArticleById.fulfilled(data, '', ''))).toEqual({ isLoading: false, data, error: undefined })
+    expect(articleReducer(store as ArticleSchema, fetchArticleById.fulfilled(ArticleMock, '', ''))).toEqual({ isLoading: false, data: ArticleMock, error: undefined })
   })
 
   test('fetchArticleById rejected', () => {

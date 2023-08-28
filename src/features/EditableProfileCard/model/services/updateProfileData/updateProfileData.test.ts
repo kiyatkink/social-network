@@ -1,20 +1,7 @@
 import { ThunkActionCreator } from 'shared/lib/tests/ThunkActionCreator';
-import { ProfileData } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { ProfileMockWithAvatarUrl } from 'entities/Profile';
 import { updateProfileData } from './updateProfileData';
 import { ServerErrors, ValidationErrors } from '../../types/ProfileSchema';
-
-const data: ProfileData = {
-  first: 'Кирилл',
-  lastname: 'Кияткин',
-  age: 23,
-  currency: Currency.RUB,
-  country: Country.Russia,
-  city: 'Omsk',
-  username: 'admin',
-  avatar: 'static/media/src/shared/assets/tests/storybook.jpg',
-}
 
 jest.mock('../../selectors/getProfileId/getProfileId', () => ({
   getProfileId: jest.fn(() => '1'),
@@ -23,17 +10,17 @@ jest.mock('../../selectors/getProfileId/getProfileId', () => ({
 describe('updateProfileData tests', () => {
   test('update profile data success', async () => {
     const asyncThunk = new ThunkActionCreator(updateProfileData)
-    asyncThunk.mockedAxios.put.mockResolvedValue(Promise.resolve({ data }))
-    const result = await asyncThunk.callAction(data)
+    asyncThunk.mockedAxios.put.mockResolvedValue(Promise.resolve({ data: ProfileMockWithAvatarUrl }))
+    const result = await asyncThunk.callAction(ProfileMockWithAvatarUrl)
 
     expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(result.payload).toEqual(data)
+    expect(result.payload).toEqual(ProfileMockWithAvatarUrl)
   })
 
   test('fetch profile data not success', async () => {
     const asyncThunk = new ThunkActionCreator(updateProfileData)
     asyncThunk.mockedAxios.put.mockResolvedValue(Promise.resolve({ status: 403 }))
-    const result = await asyncThunk.callAction(data)
+    const result = await asyncThunk.callAction(ProfileMockWithAvatarUrl)
 
     expect(result.meta.requestStatus).toBe('rejected')
     expect(result.payload).toEqual([ServerErrors.FAILED_TO_UPDATE_DATA])
@@ -41,7 +28,7 @@ describe('updateProfileData tests', () => {
 
   test('fetch profile data not valid', async () => {
     const asyncThunk = new ThunkActionCreator(updateProfileData)
-    const result = await asyncThunk.callAction({ ...data, first: '' })
+    const result = await asyncThunk.callAction({ ...ProfileMockWithAvatarUrl, first: '' })
 
     expect(result.meta.requestStatus).toBe('rejected')
     expect(result.payload).toEqual([ValidationErrors.EMPTY_FIRSTNAME])

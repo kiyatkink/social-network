@@ -1,31 +1,18 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
-import { ProfileData } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { ProfileMock } from 'entities/Profile';
 import { getProfileForm } from './getProfileForm';
-
-const form: ProfileData = {
-  first: 'Кирилл',
-  lastname: 'Кияткин',
-  age: 23,
-  currency: Currency.RUB,
-  country: Country.Russia,
-  city: 'Omsk',
-  username: 'admin',
-  avatar: '',
-}
 
 describe('getProfileForm tests', () => {
   test('get profile form from state', () => {
     const state: DeepPartial<StoreSchema> = {
       profile: {
-        form,
+        form: ProfileMock,
         isLoading: false,
         readonly: true,
       },
     }
-    expect(getProfileForm(state as StoreSchema)).toEqual(form)
+    expect(getProfileForm(state as StoreSchema)).toEqual(ProfileMock)
   })
 
   test('get form from empty state', () => {

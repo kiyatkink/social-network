@@ -32,6 +32,12 @@ export enum ArticleType {
 
 export type ArticleBlocksType = ArticleTextBlock | ArticleCodeBlock | ArticleImageBlock
 
+export interface Author {
+  userId: string,
+  username: string,
+  avatar: string,
+}
+
 export interface Article {
     id: string,
     title: string,
@@ -39,6 +45,7 @@ export interface Article {
     img: string,
     views: number,
     createdAt: string,
+    author: Author,
     type: ArticleType[]
     blocks: ArticleBlocksType[]
 }

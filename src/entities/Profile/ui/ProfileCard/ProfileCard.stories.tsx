@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import avatar from 'shared/assets/tests/storybook.jpg'
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { ProfileCard, ProfileData } from './ProfileCard';
+import { ProfileCard } from './ProfileCard';
+import { ProfileMock } from '../../mocks/data';
 
 const meta: Meta<typeof ProfileCard> = {
   title: 'entities/ProfileCard',
@@ -12,30 +10,19 @@ const meta: Meta<typeof ProfileCard> = {
   },
 };
 
-const form: ProfileData = {
-  first: 'Кирилл',
-  lastname: 'Кияткин',
-  age: 23,
-  currency: Currency.RUB,
-  country: Country.Russia,
-  city: 'Omsk',
-  username: 'admin',
-  avatar,
-}
-
 export default meta;
 type Story = StoryObj<typeof ProfileCard>;
 
 export const Default: Story = {
   args: {
-    form,
+    form: ProfileMock,
     readonly: false,
   },
 };
 
 export const Readonly: Story = {
   args: {
-    form,
+    form: ProfileMock,
     readonly: true,
   },
 };

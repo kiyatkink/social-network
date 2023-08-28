@@ -1,26 +1,11 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
-import {
-  ArticleBlocksType, ArticleBlockType, ArticleCodeBlock, ArticleType,
-} from '../types/article';
 import { getArticleData, getArticleError, getArticleIsLoading } from './articleDetail';
+import { ArticleMock } from '../../mocks/data';
 
 const store: DeepPartial<StoreSchema> = {
   article: {
-    data: {
-      id: 'string',
-      title: 'string',
-      subtitle: 'string',
-      img: 'string',
-      views: 123,
-      createdAt: 'string',
-      type: [ArticleType.IT],
-      blocks: [{
-        id: 'string',
-        type: ArticleBlockType.CODE,
-        code: 'string',
-      } as ArticleBlocksType],
-    },
+    data: ArticleMock,
     isLoading: false,
     error: 'error',
   },
@@ -28,21 +13,7 @@ const store: DeepPartial<StoreSchema> = {
 
 describe('articleDetail selectors test', () => {
   test('getArticleData test', () => {
-    const data = {
-      id: 'string',
-      title: 'string',
-      subtitle: 'string',
-      img: 'string',
-      views: 123,
-      createdAt: 'string',
-      type: [ArticleType.IT],
-      blocks: [{
-        id: 'string',
-        type: ArticleBlockType.CODE,
-        code: 'string',
-      } as ArticleBlocksType],
-    }
-    expect(getArticleData(store as StoreSchema)).toEqual(data)
+    expect(getArticleData(store as StoreSchema)).toEqual(ArticleMock)
   })
 
   test('getArticleData test empty store', () => {

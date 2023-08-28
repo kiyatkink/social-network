@@ -7,17 +7,8 @@ import { Country, CountrySelect } from 'entities/Country';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './ProfileCard.module.scss'
+import { ProfileData } from '../../model/types/profile';
 
-export interface ProfileData {
-    first?: string,
-    lastname?: string,
-    age?: number,
-    currency?: Currency,
-    country?: Country,
-    city?: string,
-    username?: string,
-    avatar?: string
-}
 interface ProfileCardProps {
     className?: string,
     form: ProfileData | undefined,

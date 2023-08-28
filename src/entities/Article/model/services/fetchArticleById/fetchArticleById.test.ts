@@ -1,23 +1,9 @@
 import { ThunkActionCreator } from 'shared/lib/tests/ThunkActionCreator';
 import { fetchArticleById } from './fetchArticleById';
-import {
-  Article, ArticleBlocksType, ArticleBlockType, ArticleType,
-} from '../../types/article';
+import { Article } from '../../types/article';
+import { ArticleMock } from '../../../mocks/data';
 
-const data: Article = {
-  id: '1',
-  title: 'string',
-  subtitle: 'string',
-  img: 'string',
-  views: 123,
-  createdAt: 'string',
-  type: [ArticleType.IT],
-  blocks: [{
-    id: 'string',
-    type: ArticleBlockType.CODE,
-    code: 'string',
-  } as ArticleBlocksType],
-}
+const data: Article = ArticleMock
 
 describe('fetchArticleById tests', () => {
   test('fetch article by id success', async () => {

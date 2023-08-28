@@ -81,7 +81,7 @@ const jestConfig: JestConfigWithTsJest = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
-    '\\.svg': '<rootDir>/config/jest/__mocks__/svg.ts',
+    '\\.(svg|jpg|png)': '<rootDir>/config/jest/__mocks__/svg.ts',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

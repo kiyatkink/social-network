@@ -1,29 +1,16 @@
 import { ThunkActionCreator } from 'shared/lib/tests/ThunkActionCreator';
-import { ProfileData } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { ProfileMock } from 'entities/Profile';
 import { fetchProfileData } from './fetchProfileData';
 import { ServerErrors } from '../../types/ProfileSchema';
-
-const data: ProfileData = {
-  first: 'Кирилл',
-  lastname: 'Кияткин',
-  age: 23,
-  currency: Currency.RUB,
-  country: Country.Russia,
-  city: 'Omsk',
-  username: 'admin',
-  avatar: '',
-}
 
 describe('fetchProfileData tests', () => {
   test('fetch profile data success', async () => {
     const asyncThunk = new ThunkActionCreator(fetchProfileData)
-    asyncThunk.mockedAxios.get.mockResolvedValue(Promise.resolve({ data }))
+    asyncThunk.mockedAxios.get.mockResolvedValue(Promise.resolve({ data: ProfileMock }))
     const result = await asyncThunk.callAction('1')
 
     expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(result.payload).toEqual(data)
+    expect(result.payload).toEqual(ProfileMock)
   })
 
   test('fetch profile data not success', async () => {

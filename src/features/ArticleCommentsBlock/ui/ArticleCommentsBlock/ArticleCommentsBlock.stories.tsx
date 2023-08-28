@@ -2,54 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import MockAdapter from 'axios-mock-adapter';
 import { AxiosMockDecorator } from 'shared/lib/storybookDecorators/AxiosMockDecorator';
 import { $api } from 'shared/api/api';
-import avatar from 'shared/assets/tests/storybook.jpg';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StoreSchema } from 'app/StoreProvider';
 import { StoreDecorator } from 'shared/lib/storybookDecorators/StoreDecorator';
-import jsImg from 'shared/assets/tests/storybook_js.png';
-import { articleReducer } from 'entities/Article';
+import { articleReducer, ArticleMock } from 'entities/Article';
 import { Reducer } from 'redux';
+import { CommentMock } from 'entities/Comment';
+import { UserMock } from 'entities/User';
 import ArticleCommentsBlock from './ArticleCommentsBlock';
 
 const pathRegex = /\/article_comments\/*/;
 const mockSuccess = (apiMock: MockAdapter) => {
   apiMock.onGet(pathRegex).reply(() => new Promise((resolve) => {
     setTimeout(() => {
-      resolve([201, [
-        {
-          id: '1',
-          text: 'Im first!',
-          avatar,
-          username: 'some_user',
-        },
-        {
-          id: '2',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          avatar,
-          username: 'some_user',
-        },
-        {
-          id: '3',
-          text: 'This is the coolest comment',
-          avatar,
-          username: 'some_user',
-        },
-        {
-          id: '4',
-          text: 'Hello Slavs!',
-          avatar,
-          username: 'some_user',
-        },
-      ]]);
+      resolve([201, new Array(5).fill(0).map((el, idx) => ({ ...CommentMock, id: `${idx}` }))]);
     }, 1000);
   }));
-  apiMock.onPost(pathRegex).reply(201, {
-    id: '1',
-    text: 'Новый комментарий, который ты только что добавил',
-    username: 'cool_man',
-    profileId: '1',
-    avatar,
-  });
+  apiMock.onPost(pathRegex).reply(201, CommentMock);
 };
 
 const mockSuccessEmptyComments = (apiMock: MockAdapter) => {
@@ -69,22 +38,10 @@ const mockError = (apiMock: MockAdapter) => {
 
 const initialStore: DeepPartial<StoreSchema> = {
   user: {
-    authData: {
-      id: '1',
-      username: 'test',
-    },
+    authData: UserMock,
   },
   article: {
-    data: {
-      id: '1',
-      title: 'Javascript news',
-      subtitle: 'Что нового в JS за 2023 год?',
-      img: jsImg,
-      views: 1022,
-      createdAt: '26.02.2023',
-      type: [],
-      blocks: [],
-    },
+    data: ArticleMock,
     isLoading: false,
   },
 }

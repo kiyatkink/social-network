@@ -1,34 +1,15 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { ProfileMock } from 'entities/Profile';
 import { ProfileSchema, ServerErrors } from '../types/ProfileSchema';
 import { profileActions, profileReducer } from './profileSlice';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
-  data: {
-    first: 'Кирилл',
-    lastname: 'Кияткин',
-    age: 23,
-    currency: Currency.RUB,
-    country: Country.Russia,
-    city: 'Omsk',
-    username: 'admin',
-    avatar: 'static/media/src/shared/assets/tests/storybook.jpg',
-  },
+  data: ProfileMock,
   isLoading: false,
   readonly: true,
-  form: {
-    first: 'Кирилл',
-    lastname: 'Кияткин',
-    age: 23,
-    currency: Currency.RUB,
-    country: Country.Russia,
-    city: 'Omsk',
-    username: 'admin',
-    avatar: 'static/media/src/shared/assets/tests/storybook.jpg',
-  },
+  form: ProfileMock,
 }
 
 describe('profileSlice tests', () => {
