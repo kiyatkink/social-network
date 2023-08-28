@@ -1,13 +1,10 @@
-import { createAsyncThunk, Dispatch } from '@reduxjs/toolkit';
-import { ExtraType, StoreSchema, ThunkApiConfig } from 'app/StoreProvider/types/StoreSchema';
-import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { StoreSchema, ThunkApiConfig } from 'app/StoreProvider/types/StoreSchema';
 import { getNewCommentText } from '../../selectors/getNewCommentText/getNewCommentText';
-import { NewCommentErrors } from '../../types/newComment';
+import { NewCommentErrors, SenderFnType, ThunkApi } from '../../types/newComment';
 import { newCommentActions } from '../../slice/newCommentSlice';
 
-type ThunkApi = BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>
-type SendFunctionType = (newComment: string, thunkAPI: ThunkApi) => Promise<void>
-export const sendNewComment = createAsyncThunk<void, SendFunctionType, ThunkApiConfig<string>>(
+export const sendNewComment = createAsyncThunk<void, SenderFnType, ThunkApiConfig<string>>(
   'newComment/newCommentSender',
   async (sendFunction, thunkAPI) => {
     const {

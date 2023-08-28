@@ -16,6 +16,10 @@ const data: ProfileData = {
   avatar: 'static/media/src/shared/assets/tests/storybook.jpg',
 }
 
+jest.mock('../../selectors/getProfileId/getProfileId', () => ({
+  getProfileId: jest.fn(() => '1'),
+}))
+
 describe('updateProfileData tests', () => {
   test('update profile data success', async () => {
     const asyncThunk = new ThunkActionCreator(updateProfileData)

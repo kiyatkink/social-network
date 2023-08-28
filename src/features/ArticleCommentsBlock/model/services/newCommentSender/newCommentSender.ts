@@ -1,15 +1,13 @@
-import { ExtraType, StoreSchema } from 'app/StoreProvider/types/StoreSchema';
+import { StoreSchema } from 'app/StoreProvider/types/StoreSchema';
 import { Comment } from 'entities/Comment/model/types/comment'
 import { getUserData } from 'entities/User';
 import { getArticleData } from 'entities/Article';
-import { NewCommentErrors, SenderFnType } from 'features/AddNewComment';
-import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
-import { Dispatch } from '@reduxjs/toolkit';
+import { NewCommentErrors, SenderFnType, ThunkApi } from 'features/AddNewComment';
 import { commentsActions } from '../../slice/commentsSlice';
 
 export const newCommentSender: SenderFnType = async (
   newComment: string,
-  thunkAPI: BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>,
+  thunkAPI: ThunkApi,
 ) => {
   const { extra, dispatch, getState } = thunkAPI
 

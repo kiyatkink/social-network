@@ -2,7 +2,7 @@ import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { Dispatch } from '@reduxjs/toolkit';
 import { ExtraType, StoreSchema } from 'app/StoreProvider';
 
-type ThunkApi = BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>
+export type ThunkApi = BaseThunkAPI<StoreSchema, ExtraType, Dispatch, string>
 export type SenderFnType = (newComment: string, thunkAPI: ThunkApi) => Promise<void>
 
 export enum NewCommentErrors {

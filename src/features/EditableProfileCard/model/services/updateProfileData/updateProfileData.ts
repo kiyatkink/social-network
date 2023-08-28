@@ -18,6 +18,10 @@ export const updateProfileData = createAsyncThunk<
         return rejectWithValue(errors)
       }
       const profileId = getProfileId(getState() as StoreSchema)
+      if (!profileId) {
+        throw new Error()
+      }
+
       const response = await extra.api.put<ProfileData>(`/profiles/${profileId}`, formData)
       if (!response.data) {
         throw new Error()
