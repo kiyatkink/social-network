@@ -13,27 +13,15 @@ import ArticleDetailsComments from './ArticleDetailsComments';
 
 const pathRegex = /\/article_comments\/*/;
 const mockSuccess = (apiMock: MockAdapter) => {
-  apiMock.onGet(pathRegex).reply(() => new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([201, new Array(5).fill(0).map((el, idx) => ({ ...CommentMock, id: `${idx}` }))]);
-    }, 1000);
-  }));
+  apiMock.onGet(pathRegex).reply(201, new Array(5).fill(0).map((el, idx) => ({ ...CommentMock, id: `${idx}` })));
   apiMock.onPost(pathRegex).reply(201, CommentMock);
 };
 
 const mockSuccessEmptyComments = (apiMock: MockAdapter) => {
-  apiMock.onGet(pathRegex).reply(() => new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([201, []]);
-    }, 1000);
-  }));
+  apiMock.onGet(pathRegex).reply(201, []);
 };
 const mockError = (apiMock: MockAdapter) => {
-  apiMock.onGet(pathRegex).reply(() => new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([401, 'error']);
-    }, 1000);
-  }));
+  apiMock.onGet(pathRegex).reply(401, 'error');
 };
 
 const initialStore: DeepPartial<StoreSchema> = {

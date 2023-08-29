@@ -48,8 +48,10 @@ export const ProfileCard: FC<ProfileCardProps> = memo((props: ProfileCardProps) 
 
   if (isLoading) {
     return (
-      <div className={cls.spinner_wrapper}>
-        <Spinner />
+      <div className={classNames(cls.ProfileCard, {}, [className])}>
+        <div className={cls.spinner_wrapper}>
+          <Spinner />
+        </div>
       </div>
     )
   }

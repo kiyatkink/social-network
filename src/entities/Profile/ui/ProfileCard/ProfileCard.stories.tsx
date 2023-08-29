@@ -5,9 +5,6 @@ import { ProfileMock } from '../../mocks/data';
 const meta: Meta<typeof ProfileCard> = {
   title: 'entities/ProfileCard',
   component: ProfileCard,
-  parameters: {
-    loki: { skip: true },
-  },
 };
 
 export default meta;
@@ -24,5 +21,11 @@ export const Readonly: Story = {
   args: {
     form: ProfileMock,
     readonly: true,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
   },
 };
