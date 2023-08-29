@@ -49,3 +49,5 @@ export interface Article {
     type: ArticleType[]
     blocks: ArticleBlocksType[]
 }
+
+export type ArticleView = 'LIST' | 'TILE'

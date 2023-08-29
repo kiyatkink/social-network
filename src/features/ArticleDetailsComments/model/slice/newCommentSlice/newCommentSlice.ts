@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { NewCommentSchema } from '../types/NewCommentSchema';
-import { sendNewComment } from '../services/sendNewComment/sendNewComment';
+import { NewCommentErrors, NewCommentSchema } from '../../types/NewCommentSchema';
+import { sendNewComment } from '../../services/sendNewComment/sendNewComment';
 
 const initialState: NewCommentSchema = {
   text: '',
@@ -14,14 +14,14 @@ export const newCommentSlice = createSlice({
   reducers: {
     changeText(store, action: PayloadAction<string>) {
       if (action.payload !== '') {
-        store.error = ''
+        store.error = undefined
       }
       store.text = action.payload
     },
     changeIsLoading(store, action: PayloadAction<boolean>) {
       store.isLoading = action.payload
     },
-    changeError(store, action: PayloadAction<string | undefined>) {
+    changeError(store, action: PayloadAction<NewCommentErrors | undefined>) {
       store.error = action.payload
     },
   },

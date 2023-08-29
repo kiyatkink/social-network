@@ -1,8 +1,8 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { Comment, CommentMock } from 'entities/Comment';
-import { CommentsSchema } from '../types/CommentsSchema';
+import { Comment, CommentMock } from '../../../../../entities/Comment';
+import { CommentsSchema } from '../../types/CommentsSchema';
 import { commentsActions, commentsReducer } from './commentsSlice';
-import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from '../../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 const initialStore: CommentsSchema = {
   isLoading: false,

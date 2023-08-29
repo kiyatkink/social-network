@@ -5,7 +5,6 @@ import cls from './ArticlesPage.module.scss'
 interface ArticlesPageProps {
     className?: string
 }
-
 const ArticlesPage: FC<ArticlesPageProps> = (props) => {
   const { className } = props
   return (

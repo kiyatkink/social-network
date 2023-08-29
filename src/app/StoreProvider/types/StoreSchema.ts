@@ -7,8 +7,7 @@ import { CombinedState, Reducer } from 'redux';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
 import { ArticleSchema } from 'entities/Article';
-import { CommentsSchema } from 'features/ArticleDetailsComments';
-import { NewCommentSchema } from 'entities/Comment';
+import { CommentsSchema, NewCommentSchema } from 'features/ArticleDetailsComments';
 
 export interface StoreSchema {
     counter: CounterSchema

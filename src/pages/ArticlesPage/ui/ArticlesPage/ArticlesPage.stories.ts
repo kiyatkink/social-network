@@ -4,9 +4,6 @@ import ArticlesPage from './ArticlesPage';
 const meta: Meta<typeof ArticlesPage> = {
   title: 'pages/ArticlesPage',
   component: ArticlesPage,
-  parameters: {
-    loki: { skip: true },
-  },
 };
 
 export default meta;
