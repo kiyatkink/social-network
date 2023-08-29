@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetail } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArticleCommentsBlock } from 'features/ArticleCommentsBlock';
+import { ArticleCommentsBlock } from 'features/ArticleDetailsComments';
 import cls from './ArticleDetailPage.module.scss'
 
 interface ArticleDetailPageProps {
