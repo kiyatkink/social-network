@@ -3,7 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Icon.module.scss'
 
 export const enum IconFill {
-    PRIMARY = 'fill_primary'
+    PRIMARY = 'fill_primary',
+    SECONDARY = 'fill_secondary'
 }
 
 export const enum IconStroke {

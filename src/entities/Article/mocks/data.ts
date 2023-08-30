@@ -13,7 +13,7 @@ export const ArticleMock: Article = {
   views: 1022,
   createdAt: '26.02.2023',
   author: {
-    userId: '1',
+    profileId: '1',
     username: 'admin',
     avatar,
   },

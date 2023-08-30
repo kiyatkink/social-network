@@ -48,6 +48,42 @@ server.use((req, res, next) => {
   next();
 });
 
+// Эндпоинт для получения статьи по id
+server.get('/articles/:id', (req, res) => {
+  try {
+    const { id } = req.params
+
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+
+    const { articles = [], profiles = [] } = db;
+
+    const article = articles.find(
+        (someArticle) => someArticle.id === id,
+    );
+
+    if (article) {
+      const authorProfile = profiles.find(
+          (profile) => profile.id === article.authorProfileId,
+      );
+
+      if (authorProfile) {
+        article["author"] = {
+          profileId: authorProfile.id,
+          username: authorProfile.username,
+          avatar: authorProfile.avatar,
+        }
+        delete article["authorProfileId"]
+        return res.json(article);
+      }
+    }
+
+    return res.status(403).json({ message: 'Failed to get article' });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+  }
+});
+
 // Эндпоинт для получения комментариев
 server.get('/article_comments/:id', (req, res) => {
   try {

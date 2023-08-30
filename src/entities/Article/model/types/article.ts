@@ -33,7 +33,7 @@ export enum ArticleType {
 export type ArticleBlocksType = ArticleTextBlock | ArticleCodeBlock | ArticleImageBlock
 
 export interface Author {
-  userId: string,
+  profileId: string,
   username: string,
   avatar: string,
 }

@@ -1,6 +1,6 @@
 :root[data-theme="dark"] {
   //Основные цвета
-  --bg-color: #090949;
+  --bg-color: #0a0a52;
   --primary-color: #00BC00;
   --secondary-color: #049604;
 
@@ -14,4 +14,7 @@
 
   // Code Block background
   --code-bg: #0D1282;
+
+  // Article Tile bg
+  --card-bg: #070736;
 }

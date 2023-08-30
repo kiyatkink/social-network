@@ -18,5 +18,7 @@
   "Отправить": "Send",
   "Не удалось отправить комментарий": "Failed to post comment",
   "Комментарий не должен быть пустым": "Comment must not be empty",
-  "Не удалось сохранить комментарий": "Failed to save comment"
+  "Не удалось сохранить комментарий": "Failed to save comment",
+  "Аватар": "Avatar",
+  "Читать далее...": "Read more..."
 }
