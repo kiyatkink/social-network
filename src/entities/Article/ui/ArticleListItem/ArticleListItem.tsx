@@ -45,7 +45,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 
   if (view === 'TILE') {
     return (
-      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+      <div onClick={navigateToArticle} className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
         <div className={cls.header}>
           <img src={article.img} alt={article.title} />
         </div>

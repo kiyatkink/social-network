@@ -3,15 +3,26 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleList.module.scss'
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+import { ArticleSkeletonListItem } from '../ArticleSkeletonListItem/ArticleSkeletonListItem';
 
 interface ArticleListProps {
     className?: string
     articles: Article[]
     view: ArticleView
+    isLoading: boolean
 }
 
 export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) => {
-  const { className, articles, view } = props
+  const {
+    className, articles, view, isLoading,
+  } = props
+
+  const renderSkeletonFunction = useCallback(() => {
+    if (view === 'TILE') {
+      return new Array(15).fill(0).map(() => <ArticleSkeletonListItem view={view} />)
+    }
+    return new Array(3).fill(0).map(() => <ArticleSkeletonListItem view={view} />)
+  }, [view])
 
   const renderFunction = useCallback(() => articles.map(
     (article) => <ArticleListItem article={article} view={view} key={article.id} />,
@@ -19,7 +30,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
   return (
     <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-      {renderFunction()}
+      { isLoading ? renderSkeletonFunction() : renderFunction()}
     </div>
   );
 });

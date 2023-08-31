@@ -23,3 +23,19 @@ export const Tile: Story = {
     view: 'TILE',
   },
 };
+
+export const ListLoading: Story = {
+  args: {
+    articles: [ArticleMock, ArticleMock, ArticleMock],
+    view: 'LIST',
+    isLoading: true,
+  },
+};
+
+export const TileLoading: Story = {
+  args: {
+    articles: [ArticleMock, ArticleMock, ArticleMock],
+    view: 'TILE',
+    isLoading: true,
+  },
+};
