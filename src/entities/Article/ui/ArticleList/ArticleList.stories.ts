@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleList } from './ArticleList';
 import { ArticleMock } from '../../mocks/data';
+import { ArticlesView } from '../../model/types/article';
 
 const meta: Meta<typeof ArticleList> = {
   title: 'entities/ArticleList',
@@ -13,21 +14,21 @@ type Story = StoryObj<typeof ArticleList>;
 export const List: Story = {
   args: {
     articles: [ArticleMock, ArticleMock, ArticleMock],
-    view: 'LIST',
+    view: ArticlesView.LIST,
   },
 };
 
 export const Tile: Story = {
   args: {
     articles: [ArticleMock, ArticleMock, ArticleMock],
-    view: 'TILE',
+    view: ArticlesView.TILE,
   },
 };
 
 export const ListLoading: Story = {
   args: {
     articles: [ArticleMock, ArticleMock, ArticleMock],
-    view: 'LIST',
+    view: ArticlesView.LIST,
     isLoading: true,
   },
 };
@@ -35,7 +36,7 @@ export const ListLoading: Story = {
 export const TileLoading: Story = {
   args: {
     articles: [ArticleMock, ArticleMock, ArticleMock],
-    view: 'TILE',
+    view: ArticlesView.TILE,
     isLoading: true,
   },
 };

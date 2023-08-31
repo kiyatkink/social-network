@@ -16,6 +16,26 @@ server.use(async (req, res, next) => {
   next();
 });
 
+
+function addAuthorToArticle (article, profiles) {
+  const authorProfile = profiles.find(
+      (profile) => profile.id === article.authorProfileId,
+  );
+
+  if (authorProfile) {
+    article["author"] = {
+      profileId: authorProfile.id,
+      username: authorProfile.username,
+      avatar: authorProfile.avatar,
+    }
+    delete article["authorProfileId"]
+    return article;
+  }
+  return null
+}
+
+
+
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
   try {
@@ -62,22 +82,35 @@ server.get('/articles/:id', (req, res) => {
     );
 
     if (article) {
-      const authorProfile = profiles.find(
-          (profile) => profile.id === article.authorProfileId,
-      );
-
-      if (authorProfile) {
-        article["author"] = {
-          profileId: authorProfile.id,
-          username: authorProfile.username,
-          avatar: authorProfile.avatar,
-        }
-        delete article["authorProfileId"]
-        return res.json(article);
+      const newArticle = addAuthorToArticle(article, profiles)
+      if (newArticle) {
+        return res.json(newArticle);
       }
     }
 
     return res.status(403).json({ message: 'Failed to get article' });
+
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+  }
+});
+
+// Эндпоинт для получения всех статей
+server.get('/articles', (req, res) => {
+  try {
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+
+    const { articles = [], profiles = [] } = db;
+
+    const result = articles.map((article) => addAuthorToArticle(article, profiles)).filter(Boolean);
+
+    if (result) {
+      return res.json(result);
+    }
+
+    return res.status(403).json({ message: 'Failed to get article' });
+
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: e.message });

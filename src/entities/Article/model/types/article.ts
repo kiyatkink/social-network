@@ -50,4 +50,7 @@ export interface Article {
     blocks: ArticleBlocksType[]
 }
 
-export type ArticleView = 'LIST' | 'TILE'
+export enum ArticlesView {
+    LIST = 'LIST',
+    TILE = 'TILE',
+}

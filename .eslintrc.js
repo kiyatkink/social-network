@@ -24,6 +24,13 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'off',
       },
     },
+    {
+      'files': ['**/?(*)+(Decorator).[tj]sx'],
+      'rules': {
+        'react-hooks/exhaustive-deps': 'off',
+        'react-hooks/rules-of-hooks': 'off',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',

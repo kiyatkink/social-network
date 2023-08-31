@@ -2,11 +2,11 @@ import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './ArticleSkeletonListItem.module.scss'
-import { ArticleView } from '../../model/types/article';
+import { ArticlesView } from '../../model/types/article';
 
 interface ArticleSkeletonListItemProps {
     className?: string
-    view: ArticleView
+    view: ArticlesView
 }
 
 export const ArticleSkeletonListItem: FC<ArticleSkeletonListItemProps> = memo((props: ArticleSkeletonListItemProps) => {

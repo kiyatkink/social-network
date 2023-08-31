@@ -14,13 +14,13 @@ import { useTranslation } from 'react-i18next';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss'
 import {
-  Article, ArticleBlockType, ArticleTextBlock, ArticleView,
+  Article, ArticleBlockType, ArticleTextBlock, ArticlesView,
 } from '../../model/types/article';
 
 interface ArticleListItemProps {
     className?: string
     article: Article
-    view: ArticleView
+    view: ArticlesView
 }
 
 const AvatarSize = {
@@ -43,7 +43,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
     [article.blocks],
   )
 
-  if (view === 'TILE') {
+  if (view === ArticlesView.TILE) {
     return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
       <div onClick={navigateToArticle} className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
