@@ -27,12 +27,7 @@ export default meta;
 type Story = StoryObj<typeof ArticlesPage>;
 export const List: Story = {
   decorators: [
-    (StoryComponent: StoryFn) => {
-      useEffect(() => {
-        localStorage.setItem(ARTICLES_VIEW_TYPE, ArticlesView.LIST)
-      }, []);
-      return <StoryComponent />
-    },
+    ActionDispatch([articlesListActions.setView(ArticlesView.LIST)]),
   ],
 };
 

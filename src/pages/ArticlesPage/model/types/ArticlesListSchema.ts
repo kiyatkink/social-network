@@ -5,4 +5,6 @@ export interface ArticlesListSchema extends EntityState<Article> {
     isLoading: boolean,
     error?: string,
     view: ArticlesView
+    page: number,
+    hasMore: boolean,
 }

@@ -5,9 +5,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { CommentsList, SkeletonCommentsList, AddNewComment } from 'entities/Comment';
 import { Text, TextSize, TextThems } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next';
-import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { useAsyncReducer } from '../../../../shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 import cls from './ArticleDetailsComments.module.scss'
 import { commentsReducer, commentsSelectors } from '../../model/slice/commentsSlice/commentsSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';

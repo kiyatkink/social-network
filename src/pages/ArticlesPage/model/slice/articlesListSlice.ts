@@ -15,6 +15,8 @@ const initialStore: ArticlesListSchema = {
   view: localStorage.getItem(ARTICLES_VIEW_TYPE) as ArticlesView | ArticlesView.LIST,
   ids: [],
   entities: {},
+  hasMore: true,
+  page: 1,
 }
 
 export const articlesListSelectors = articlesListAdapter.getSelectors<StoreSchema>(
@@ -29,6 +31,12 @@ export const articlesListSlice = createSlice({
       state.view = action.payload
       localStorage.setItem(ARTICLES_VIEW_TYPE, action.payload)
     },
+    changeHasMore: (state, action: PayloadAction<boolean>) => {
+      state.hasMore = action.payload
+    },
+    changePage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -38,7 +46,7 @@ export const articlesListSlice = createSlice({
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false
-        articlesListAdapter.setMany(state, action.payload)
+        articlesListAdapter.addMany(state, action.payload)
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.isLoading = false

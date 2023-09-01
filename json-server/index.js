@@ -98,6 +98,8 @@ server.get('/articles/:id', (req, res) => {
 
 // Эндпоинт для получения всех статей
 server.get('/articles', (req, res) => {
+  const { _page, _limit } = req.query
+
   try {
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
 
@@ -106,6 +108,11 @@ server.get('/articles', (req, res) => {
     const result = articles.map((article) => addAuthorToArticle(article, profiles)).filter(Boolean);
 
     if (result) {
+      if (_page && _limit) {
+        const begin = (_page - 1) * _limit
+        const end = _page * _limit
+        return res.json(result.slice(begin, end));
+      }
       return res.json(result);
     }
 

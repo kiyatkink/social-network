@@ -45,7 +45,7 @@ export const ArticleSkeletonListItem: FC<ArticleSkeletonListItemProps> = memo((p
         <Skeleton width="30%" height="24px" />
       </div>
       <div className={cls.main}>
-        <Skeleton width="100%" height="241px" />
+        <Skeleton width="100%" height="40vh" />
         <div className={cls.text}>
           <Skeleton width="100%" height="25px" />
           <Skeleton width="100%" height="25px" />

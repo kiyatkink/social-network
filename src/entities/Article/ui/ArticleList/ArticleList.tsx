@@ -19,7 +19,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
   const renderSkeletonFunction = useCallback(() => {
     if (view === ArticlesView.TILE) {
-      return new Array(15).fill(0).map((el, idx) => <ArticleSkeletonListItem view={view} key={idx} />)
+      return new Array(10).fill(0).map((el, idx) => <ArticleSkeletonListItem view={view} key={idx} />)
     }
     return new Array(3).fill(0).map((el, idx) => <ArticleSkeletonListItem view={view} key={idx} />)
   }, [view])
@@ -30,7 +30,8 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
   return (
     <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-      { isLoading ? renderSkeletonFunction() : renderFunction()}
+      { renderFunction() }
+      { isLoading && renderSkeletonFunction() }
     </div>
   );
 });

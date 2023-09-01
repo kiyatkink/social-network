@@ -3,12 +3,12 @@ import {
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
-import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, TextThems } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { useAsyncReducer } from '../../../../shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 import cls from './EditableProfileCard.module.scss'
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';

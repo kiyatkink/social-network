@@ -27,7 +27,7 @@ export const Tile: Story = {
 
 export const ListLoading: Story = {
   args: {
-    articles: [ArticleMock, ArticleMock, ArticleMock],
+    articles: [],
     view: ArticlesView.LIST,
     isLoading: true,
   },
@@ -35,7 +35,7 @@ export const ListLoading: Story = {
 
 export const TileLoading: Story = {
   args: {
-    articles: [ArticleMock, ArticleMock, ArticleMock],
+    articles: [],
     view: ArticlesView.TILE,
     isLoading: true,
   },

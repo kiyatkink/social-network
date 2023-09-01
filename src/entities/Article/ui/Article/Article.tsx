@@ -2,7 +2,6 @@ import {
   FC, memo, ReactNode, useEffect,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextSize, TextThems } from 'shared/ui/Text/Text'
@@ -11,6 +10,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/eye-icon.svg'
 import CalendarIcon from 'shared/assets/calendar-icon.svg'
 import { Icon, IconFill } from 'shared/ui/Icon/Icon';
+import { useAsyncReducer } from '../../../../shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 import { articleReducer } from '../../model/slice/articleSlice';
 import cls from './Article.module.scss'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';

@@ -5,7 +5,7 @@ import { AppInput, AppInputSize } from 'shared/ui/AppInput/AppInput';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, TextThems } from 'shared/ui/Text/Text';
-import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
+import { useAsyncReducer } from '../../../../shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 import cls from './LoginUserForm.module.scss'
 import { getLoginUser } from '../../model/selectors/getLoginUser/getLoginUser';
 import { LoginUserActions, LoginUserReducer } from '../../model/slice/LoginUserSlice';
