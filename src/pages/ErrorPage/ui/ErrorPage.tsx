@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
 import cls from './ErrorPage.module.scss'
+import { Page } from '../../../shared/ui/Page/Page';
 
 interface ErrorPageProps {
     className?: string
@@ -16,7 +17,7 @@ export const ErrorPage: FC<ErrorPageProps> = (props) => {
   }
 
   return (
-    <div className={classNames(cls.ErrorPage, {}, [className])}>
+    <Page className={classNames(cls.ErrorPage, {}, [className])}>
       <p className={cls.Text}>{t('Что-то пошло не так')}</p>
       <AppButton
         onClick={reloadHandler}
@@ -25,6 +26,6 @@ export const ErrorPage: FC<ErrorPageProps> = (props) => {
       >
         {t('Перезагрузить страницу')}
       </AppButton>
-    </div>
+    </Page>
   );
 };

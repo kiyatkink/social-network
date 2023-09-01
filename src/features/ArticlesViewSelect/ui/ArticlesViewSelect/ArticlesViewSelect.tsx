@@ -26,6 +26,7 @@ export const ArticlesViewSelect: FC<ArticlesViewSelectProps> = memo((props: Arti
               <AppButton
                 className={classNames('', { [cls.selected]: viewType === view }, [])}
                 onClick={changeView(viewType as ArticlesView)}
+                key={viewType}
               >
                 <Icon Svg={icon} width="30px" height="30px" />
               </AppButton>

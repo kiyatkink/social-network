@@ -4,6 +4,9 @@ import { $api } from 'shared/api/api';
 import MockAdapter from 'axios-mock-adapter';
 import { ArticleMock, ArticlesView } from 'entities/Article';
 import { ActionDispatch } from 'shared/lib/storybookDecorators/ActionDispatchDecorator';
+import { StoryFn } from '@storybook/react';
+import { useEffect } from 'react';
+import { ARTICLES_VIEW_TYPE } from 'shared/consts/localstorage';
 import ArticlesPage from './ArticlesPage';
 import { articlesListActions } from '../../model/slice/articlesListSlice';
 
@@ -23,6 +26,14 @@ const meta: Meta<typeof ArticlesPage> = {
 export default meta;
 type Story = StoryObj<typeof ArticlesPage>;
 export const List: Story = {
+  decorators: [
+    (StoryComponent: StoryFn) => {
+      useEffect(() => {
+        localStorage.setItem(ARTICLES_VIEW_TYPE, ArticlesView.LIST)
+      }, []);
+      return <StoryComponent />
+    },
+  ],
 };
 
 export const Tile: Story = {

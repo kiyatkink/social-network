@@ -74,5 +74,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     'react/jsx-no-useless-fragment': 'off',
     'func-names': 'off',
+    'react/no-array-index-key': 'off',
   },
 };

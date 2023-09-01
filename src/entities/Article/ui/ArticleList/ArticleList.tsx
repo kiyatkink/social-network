@@ -19,13 +19,13 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
   const renderSkeletonFunction = useCallback(() => {
     if (view === ArticlesView.TILE) {
-      return new Array(15).fill(0).map(() => <ArticleSkeletonListItem view={view} />)
+      return new Array(15).fill(0).map((el, idx) => <ArticleSkeletonListItem view={view} key={idx} />)
     }
-    return new Array(3).fill(0).map(() => <ArticleSkeletonListItem view={view} />)
+    return new Array(3).fill(0).map((el, idx) => <ArticleSkeletonListItem view={view} key={idx} />)
   }, [view])
 
   const renderFunction = useCallback(() => articles.map(
-    (article) => <ArticleListItem article={article} view={view} key={article.id} />,
+    (article, idx) => <ArticleListItem article={article} view={view} key={article.id} />,
   ), [articles, view])
 
   return (

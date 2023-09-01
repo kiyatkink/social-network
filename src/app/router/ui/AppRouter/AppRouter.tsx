@@ -4,15 +4,12 @@ import {
 import { Route, Routes } from 'react-router-dom';
 import { PageLoader } from 'widgets/PageLoader';
 import { routeConfig, RoutePropsWithAuth } from 'shared/config/routerConfig/routerConfig';
-import cls from './AppRouter.module.scss';
 import { PrivateWrapper } from '../PrivateWrapper/PrivateWrapper';
 
 export const AppRouter = memo(() => {
   const renderElement = useCallback((element: ReactNode) => (
     <Suspense fallback={<PageLoader />}>
-      <div className={cls.wrapper}>
-        {element}
-      </div>
+      {element}
     </Suspense>
   ), [])
 

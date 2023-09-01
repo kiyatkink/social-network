@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAsyncReducer } from 'shared/lib/useAsyncReducer/useAsyncReducer';
 import { ArticlesViewSelect } from 'features/ArticlesViewSelect';
 import { ArticleList, ArticlesView } from 'entities/Article';
+import { Text, TextThems } from 'shared/ui/Text/Text'
 import cls from './ArticlesPage.module.scss'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { articlesListActions, articlesListReducer, articlesListSelectors } from '../../model/slice/articlesListSlice';
@@ -14,7 +15,7 @@ import {
   getArticlesListIsLoading,
   getArticlesListView,
 } from '../../model/selectors/articlesList/articlesList';
-import { Text, TextThems } from '../../../../shared/ui/Text/Text'
+import { Page } from '../../../../shared/ui/Page/Page';
 
 interface ArticlesPageProps {
     className?: string
@@ -46,10 +47,10 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
   }
 
   return (
-    <div className={classNames(cls.ArticlesPage, {}, [className])}>
+    <Page className={classNames(cls.ArticlesPage, {}, [className])}>
       <ArticlesViewSelect viewChanger={viewChanger} view={viewArticles} />
       <ArticleList articles={articles} view={viewArticles} isLoading={isLoadingArticles} />
-    </div>
+    </Page>
   );
 };
 

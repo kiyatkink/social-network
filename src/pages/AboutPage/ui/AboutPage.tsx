@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { Page } from 'shared/ui/Page/Page';
 
 function AboutPage() {
   const { t } = useTranslation('about');
   return (
-    <div data-testid="about-page">
+    <Page data-testid="about-page">
       {t('О сайте')}
-    </div>
+    </Page>
   );
 }
 
