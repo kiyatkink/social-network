@@ -1,12 +1,13 @@
 import {
-  FC, memo, useCallback, useEffect,
+  FC, memo, useCallback,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArticlesViewSelect } from 'features/ArticlesViewSelect';
 import { ArticleList, ArticlesView } from 'entities/Article';
 import { Text, TextThems } from 'shared/ui/Text/Text'
-import { useAsyncReducer } from '../../../../shared/lib/hooks/useAsyncReducer/useAsyncReducer';
+import { useAsyncReducer } from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './ArticlesPage.module.scss'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { articlesListActions, articlesListReducer, articlesListSelectors } from '../../model/slice/articlesListSlice';
@@ -15,7 +16,6 @@ import {
   getArticlesListIsLoading,
   getArticlesListView,
 } from '../../model/selectors/articlesListSelectors/articlesListSelectors';
-import { Page } from '../../../../shared/ui/Page/Page';
 
 interface ArticlesPageProps {
     className?: string
@@ -29,7 +29,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
   const viewArticles = useSelector(getArticlesListView)
   const hasMore = useSelector(getArticlesListHasMore)
 
-  useAsyncReducer('articlesList', articlesListReducer)
+  useAsyncReducer('articlesList', articlesListReducer, true)
 
   const viewChanger = useCallback((newView: ArticlesView) => {
     dispatch(articlesListActions.setView(newView))

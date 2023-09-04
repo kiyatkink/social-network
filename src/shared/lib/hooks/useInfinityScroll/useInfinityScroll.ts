@@ -3,19 +3,27 @@ import { MutableRefObject, useEffect } from 'react';
 interface UseInfinityScrollProps {
     root: MutableRefObject<Element | null>,
     target: MutableRefObject<Element>,
-    callback: (() => void) | undefined
+    callback: (() => void) | undefined,
+    rootMargin?: string,
+    threshold?: number
 }
 
 export function useInfinityScroll(props: UseInfinityScrollProps) {
-  const { root, target, callback } = props
+  const {
+    root,
+    target,
+    callback,
+    rootMargin = '0px',
+    threshold = 1.0,
+  } = props
 
   useEffect(() => {
     if (callback) {
       const targetElement = target.current
       const options = {
         root: root.current,
-        rootMargin: '0px',
-        threshold: 1.0,
+        rootMargin,
+        threshold,
       };
 
       const observer = new IntersectionObserver(([entry]) => {
@@ -30,5 +38,5 @@ export function useInfinityScroll(props: UseInfinityScrollProps) {
         observer.unobserve(targetElement)
       }
     }
-  }, [callback, root, target])
+  }, [callback, root, rootMargin, target, threshold])
 }
