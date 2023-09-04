@@ -7,7 +7,7 @@ import { ArticlesViewSelect } from 'features/ArticlesViewSelect';
 import { ArticleList, ArticlesView } from 'entities/Article';
 import { Text, TextThems } from 'shared/ui/Text/Text'
 import { useAsyncReducer } from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import cls from './ArticlesPage.module.scss'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { articlesListActions, articlesListReducer, articlesListSelectors } from '../../model/slice/articlesListSlice';

@@ -4,7 +4,7 @@ import { ArticleDetail } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleCommentsBlock } from 'features/ArticleDetailsComments';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import cls from './ArticleDetailPage.module.scss'
 
 interface ArticleDetailPageProps {
@@ -25,7 +25,7 @@ const ArticleDetailPage: FC<ArticleDetailPageProps> = (props) => {
   }
 
   return (
-    <Page className={classNames(cls.ArticleDetailPage, {}, [className])}>
+    <Page disableSaveScroll className={classNames(cls.ArticleDetailPage, {}, [className])}>
       <ArticleDetail id={id} />
       <ArticleCommentsBlock id={id} />
     </Page>

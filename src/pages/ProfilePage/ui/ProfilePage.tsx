@@ -4,7 +4,7 @@ import { EditableProfileCard } from 'features/EditableProfileCard';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Text, TextThems } from 'shared/ui/Text/Text';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import cls from './ProfilePage.module.scss'
 import { getCanEdit } from '../model/selectors/getCanEdit/getCanEdit';
 

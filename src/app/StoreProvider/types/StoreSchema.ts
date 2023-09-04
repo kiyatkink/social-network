@@ -9,10 +9,12 @@ import { AxiosInstance } from 'axios';
 import { ArticleSchema } from 'entities/Article';
 import { CommentsSchema, NewCommentSchema } from 'features/ArticleDetailsComments';
 import { ArticlesListSchema } from 'pages/ArticlesPage';
+import { PageSchema } from 'widgets/Page';
 
 export interface StoreSchema {
     counter: CounterSchema
     user: UserSchema
+    page: PageSchema
 
     // Асинхронные редюсеры
     loginUser?: LoginUserSchema

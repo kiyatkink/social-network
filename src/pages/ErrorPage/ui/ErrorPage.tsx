@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton, AppButtonThems } from 'shared/ui/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'widgets/Page';
 import cls from './ErrorPage.module.scss'
-import { Page } from '../../../shared/ui/Page/Page';
 
 interface ErrorPageProps {
     className?: string
