@@ -9,7 +9,7 @@
             "views": 1022,
             "createdAt": "26.02.2023",
             "type": [
-                "IT"
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -41,10 +41,11 @@
             "title": "Programming — What Is It? (Beginner's Edition of 2023)",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://www.codingem.com/wp-content/uploads/2021/10/juanjo-jaramillo-mZnx9429i94-unsplash-1024x683.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 4546,
+            "createdAt": "09.12.2022",
             "type": [
-                "IT"
+                "SCIENCE",
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -76,10 +77,11 @@
             "title": "Beginner's guide to the 5 most popular programming languages",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://www.educative.io/api/page/6096075812241408/image/download/6443342641496064",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9638,
+            "createdAt": "08.01.2012",
             "type": [
-                "IT"
+                "ECONOMICS",
+                "HISTORY"
             ],
             "blocks": [
                 {
@@ -111,10 +113,13 @@
             "title": "Kotlin",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://media.proglib.io/wp-uploads/2017/06/mainkotlin.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9969,
+            "createdAt": "13.12.2002",
             "type": [
-                "IT"
+                "SCIENCE",
+                "ECONOMICS",
+                "POLITICS",
+                "HISTORY"
             ],
             "blocks": [
                 {
@@ -146,10 +151,13 @@
             "title": "Golang news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://i.ytimg.com/vi/h0zxh2TPN_I/maxresdefault.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 964,
+            "createdAt": "15.09.2017",
             "type": [
-                "IT"
+                "POLITICS",
+                "IT",
+                "ECONOMICS",
+                "SCIENCE"
             ],
             "blocks": [
                 {
@@ -181,9 +189,13 @@
             "title": "C# news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://itvdn.blob.core.windows.net/webinar-covers/webinar-covers-975d8452-8a56-4e4e-b6a7-f32c07383abc.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9552,
+            "createdAt": "28.02.2017",
             "type": [
+                "ECONOMICS",
+                "SCIENCE",
+                "POLITICS",
+                "HISTORY",
                 "IT"
             ],
             "blocks": [
@@ -216,10 +228,12 @@
             "title": "C++ news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT3tOFdxi3VTi__RbyqodiEj6NR_7I5z14dw&usqp=CAU",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 3406,
+            "createdAt": "22.06.2020",
             "type": [
-                "IT"
+                "SCIENCE",
+                "POLITICS",
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -251,8 +265,8 @@
             "title": "JetBrains news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwdoTy9iz4xUZxTW-VXcjn1DtXoArmnqHZrw&usqp=CAU",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9125,
+            "createdAt": "07.03.2008",
             "type": [
                 "IT"
             ],
@@ -286,10 +300,14 @@
             "title": "Rubles news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://media.sproutsocial.com/uploads/2023/02/How-to-think-about-social-media-in-a-down-economy-Final.png",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 6106,
+            "createdAt": "01.11.2017",
             "type": [
-                "ECONOMY"
+                "POLITICS",
+                "SCIENCE",
+                "ECONOMICS",
+                "IT",
+                "HISTORY"
             ],
             "blocks": [
                 {
@@ -321,10 +339,14 @@
             "title": "Ilon Mask news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://static.foxbusiness.com/foxbusiness.com/content/uploads/2021/03/Musk-Starship-Spacex.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 6130,
+            "createdAt": "11.10.2019",
             "type": [
-                "IT"
+                "SCIENCE",
+                "HISTORY",
+                "ECONOMICS",
+                "IT",
+                "POLITICS"
             ],
             "blocks": [
                 {
@@ -356,10 +378,10 @@
             "title": "Sony news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://store.sony.ru/common/r2014/i/sony-logo--og.png",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 3255,
+            "createdAt": "23.04.2007",
             "type": [
-                "IT"
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -391,10 +413,14 @@
             "title": "Javascript news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 2058,
+            "createdAt": "07.11.2003",
             "type": [
-                "IT"
+                "HISTORY",
+                "ECONOMICS",
+                "POLITICS",
+                "IT",
+                "SCIENCE"
             ],
             "blocks": [
                 {
@@ -426,10 +452,12 @@
             "title": "Programming — What Is It? (Beginner's Edition of 2023)",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://www.codingem.com/wp-content/uploads/2021/10/juanjo-jaramillo-mZnx9429i94-unsplash-1024x683.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 1667,
+            "createdAt": "13.11.2001",
             "type": [
-                "IT"
+                "IT",
+                "SCIENCE",
+                "HISTORY"
             ],
             "blocks": [
                 {
@@ -461,10 +489,11 @@
             "title": "Beginner's guide to the 5 most popular programming languages",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://www.educative.io/api/page/6096075812241408/image/download/6443342641496064",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9804,
+            "createdAt": "04.07.2005",
             "type": [
-                "IT"
+                "IT",
+                "POLITICS"
             ],
             "blocks": [
                 {
@@ -496,10 +525,11 @@
             "title": "Kotlin",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://media.proglib.io/wp-uploads/2017/06/mainkotlin.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 9658,
+            "createdAt": "28.08.2012",
             "type": [
-                "IT"
+                "POLITICS",
+                "HISTORY"
             ],
             "blocks": [
                 {
@@ -531,10 +561,12 @@
             "title": "Golang news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://i.ytimg.com/vi/h0zxh2TPN_I/maxresdefault.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 4433,
+            "createdAt": "08.06.2008",
             "type": [
-                "IT"
+                "IT",
+                "POLITICS",
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -566,10 +598,13 @@
             "title": "C# news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://itvdn.blob.core.windows.net/webinar-covers/webinar-covers-975d8452-8a56-4e4e-b6a7-f32c07383abc.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 3801,
+            "createdAt": "28.09.2019",
             "type": [
-                "IT"
+                "IT",
+                "POLITICS",
+                "HISTORY",
+                "SCIENCE"
             ],
             "blocks": [
                 {
@@ -601,10 +636,11 @@
             "title": "C++ news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT3tOFdxi3VTi__RbyqodiEj6NR_7I5z14dw&usqp=CAU",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 7478,
+            "createdAt": "11.01.2023",
             "type": [
-                "IT"
+                "SCIENCE",
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -636,9 +672,10 @@
             "title": "JetBrains news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwdoTy9iz4xUZxTW-VXcjn1DtXoArmnqHZrw&usqp=CAU",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 2974,
+            "createdAt": "10.06.2023",
             "type": [
+                "ECONOMICS",
                 "IT"
             ],
             "blocks": [
@@ -671,10 +708,12 @@
             "title": "Rubles news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://media.sproutsocial.com/uploads/2023/02/How-to-think-about-social-media-in-a-down-economy-Final.png",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 3261,
+            "createdAt": "08.05.2011",
             "type": [
-                "IT"
+                "SCIENCE",
+                "IT",
+                "ECONOMICS"
             ],
             "blocks": [
                 {
@@ -706,10 +745,14 @@
             "title": "Ilon Mask news",
             "subtitle": "Что нового в JS за 2023 год?",
             "img": "https://static.foxbusiness.com/foxbusiness.com/content/uploads/2021/03/Musk-Starship-Spacex.jpg",
-            "views": 1022,
-            "createdAt": "26.02.2023",
+            "views": 1737,
+            "createdAt": "28.04.2001",
             "type": [
-                "IT"
+                "HISTORY",
+                "IT",
+                "POLITICS",
+                "ECONOMICS",
+                "SCIENCE"
             ],
             "blocks": [
                 {
@@ -758,6 +801,11 @@
                 {
                     "id": "4",
                     "text": "Hello",
+                    "userId": "1"
+                },
+                {
+                    "id": "5",
+                    "text": "lklklklk",
                     "userId": "1"
                 }
             ]

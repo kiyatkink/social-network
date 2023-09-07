@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { OptionsProps, Select } from 'shared/ui/Select/Select';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ interface CounterSelectProps {
     readonly: boolean,
 }
 
-const options: Array<OptionsProps> = [
+const options: Array<OptionsProps<Country>> = [
   { name: Country.Russia, value: Country.Russia },
   { name: Country.Belarus, value: Country.Belarus },
   { name: Country.Ukraine, value: Country.Ukraine },
@@ -26,17 +26,13 @@ export const CountrySelect: FC<CounterSelectProps> = memo((props: CounterSelectP
   } = props
   const { t } = useTranslation('profile')
 
-  const onChangeHandler = useCallback((value: string) => {
-    onChange?.(value as Country);
-  }, [onChange]);
-
   return (
     <div className={classNames(cls.CounterSelect, {}, [className])}>
       <Select
         placeholder={t('Страна')}
         options={options}
         value={value}
-        onChange={onChangeHandler}
+        onChange={onChange}
         readonly={readonly}
       />
     </div>

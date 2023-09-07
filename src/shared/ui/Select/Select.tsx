@@ -1,30 +1,29 @@
-import React, {
-  FC, memo, SelectHTMLAttributes, useMemo,
-} from 'react';
+import React, { SelectHTMLAttributes, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Select.module.scss'
+import { genericMemo } from '../../types/genericMemo';
 
 type HTMLSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'>
 
-export interface OptionsProps {
+export interface OptionsProps<T extends string> {
     name: string,
-    value: string
+    value: T
 }
 
 export enum SelectThems {
     DEFAULT = 'default'
 }
-interface SelectProps extends HTMLSelectProps{
+interface SelectProps<T extends string> extends HTMLSelectProps{
     className?: string,
     placeholder?: string,
-    value?: string | number,
-    onChange: (value: string) => void,
-    options: Array<OptionsProps>,
+    value?: T,
+    onChange: (value: T) => void,
+    options: Array<OptionsProps<T>>,
     theme?: SelectThems,
-    readonly: boolean,
+    readonly?: boolean,
 }
 
-export const Select: FC<SelectProps> = memo((props: SelectProps) => {
+export const Select = genericMemo(<T extends string>(props: SelectProps<T>) => {
   const {
     className,
     placeholder,
@@ -36,7 +35,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
   } = props
 
   const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(e.target.value);
+    onChange?.(e.target.value as T);
   }
 
   const optionsList = useMemo(() => options.map((option) => (

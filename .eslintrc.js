@@ -75,5 +75,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'func-names': 'off',
     'react/no-array-index-key': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unused-expressions': 'off',
   },
 };

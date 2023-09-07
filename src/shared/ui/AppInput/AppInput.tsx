@@ -1,6 +1,7 @@
-import React, { FC, InputHTMLAttributes, memo } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppInput.module.scss'
+import { genericMemo } from '../../types/genericMemo';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'size'>
 
@@ -9,17 +10,17 @@ export enum AppInputSize {
   'L' = 'l',
   'XL' = 'xl'
 }
-export interface AppInputProps extends HTMLInputProps{
+export interface AppInputProps<T extends string> extends HTMLInputProps{
     className?: string,
     type?: string,
     placeholder?: string,
-    value?: string | number,
-    onChange?: (value: string) => void,
+    value?: T,
+    onChange?: (value: T) => void,
     autofocus?: boolean,
     size?: AppInputSize,
 }
 
-export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
+export const AppInput = genericMemo(<T extends string>(props: AppInputProps<T>) => {
   const {
     className,
     type = 'text',
@@ -32,7 +33,7 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
   } = props
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
+    onChange?.(e.target.value as T);
   }
 
   return (

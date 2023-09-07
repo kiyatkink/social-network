@@ -2,16 +2,10 @@
 }
 
 .TILE {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  &::after {
-    content: "";
-    flex: auto;
-    width: 350px;
-  }
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+  width: 70vw;
 }
 
 .LIST {

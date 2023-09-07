@@ -27,7 +27,9 @@ export interface ArticleImageBlock extends ArticleBlockBase{
 export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
+    ECONOMICS = 'ECONOMICS',
+    HISTORY = 'HISTORY',
+    POLITICS = 'POLITICS'
 }
 
 export type ArticleBlocksType = ArticleTextBlock | ArticleCodeBlock | ArticleImageBlock

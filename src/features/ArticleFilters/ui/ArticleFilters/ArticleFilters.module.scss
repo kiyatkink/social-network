@@ -1,0 +1,30 @@
+.ArticleFilters {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main {
+  border: 1px solid var(--primary-color);
+  padding: 10px 15px;
+}
+
+.footer {
+  display: flex;
+  gap: 20px;
+
+  .card {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

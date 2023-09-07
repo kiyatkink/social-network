@@ -2,8 +2,8 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 import { Article, ArticlesView } from 'entities/Article';
 import { StoreSchema } from 'app/StoreProvider';
 import { ARTICLES_VIEW_TYPE } from 'shared/consts/localstorage';
-import { ArticlesListSchema } from '../types/ArticlesListSchema';
-import { fetchArticles } from '../services/fetchArticles/fetchArticles';
+import { ArticlesListSchema } from '../../types/ArticlesListSchema';
+import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 
 const articlesListAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id,
@@ -43,10 +43,14 @@ export const articlesListSlice = createSlice({
       .addCase(fetchArticles.pending, (state) => {
         state.error = undefined
         state.isLoading = true
+        if (state.page === 1) {
+          articlesListAdapter.removeAll(state)
+        }
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false
         articlesListAdapter.addMany(state, action.payload)
+        state.page += 1
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.isLoading = false

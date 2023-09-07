@@ -10,6 +10,7 @@ import { ArticleSchema } from 'entities/Article';
 import { CommentsSchema, NewCommentSchema } from 'features/ArticleDetailsComments';
 import { ArticlesListSchema } from 'pages/ArticlesPage';
 import { PageSchema } from 'widgets/Page';
+import { ArticleFiltersSchema } from 'features/ArticleFilters';
 
 export interface StoreSchema {
     counter: CounterSchema
@@ -23,6 +24,7 @@ export interface StoreSchema {
     comments?: CommentsSchema
     newComment?: NewCommentSchema
     articlesList?: ArticlesListSchema
+    articleFilters?: ArticleFiltersSchema
 }
 
 export type StoreSchemaKeys = keyof StoreSchema

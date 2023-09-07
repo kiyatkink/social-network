@@ -4,6 +4,12 @@ import { fetchArticles } from './fetchArticles';
 
 jest.mock('../../selectors/articlesListSelectors/articlesListSelectors')
 
+jest.mock('features/ArticleFilters', () => ({
+  getArticleFilters: jest.fn(() => ({
+    sort: '', order: '', search: '', type: '',
+  })),
+}))
+
 describe('fetchArticles tests', () => {
   test('fetchArticles success', async () => {
     const asyncThunk = new ThunkActionCreator(fetchArticles)
@@ -13,7 +19,7 @@ describe('fetchArticles tests', () => {
     const result = await asyncThunk.callAction()
 
     expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(asyncThunk.dispatch).toBeCalledTimes(4)
+    expect(asyncThunk.dispatch).toBeCalledTimes(3)
   })
 
   test('fetchArticles reject', async () => {

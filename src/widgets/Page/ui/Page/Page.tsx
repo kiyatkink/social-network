@@ -37,9 +37,10 @@ export const Page: FC<PageProps> = (props: PageProps) => {
       root: rootRef as MutableRefObject<Element>,
       target: targetRef as MutableRefObject<Element>,
       callback: infinityScrollCallback,
-      rootMargin: '20px 45px',
+      rootMargin: '25px 45px',
     }
   ), [infinityScrollCallback])
+
   useInfinityScroll(infinityScrollProps)
 
   const saveScroll = useThrottle((e: React.UIEvent<HTMLDivElement>) => {

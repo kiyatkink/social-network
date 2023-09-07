@@ -1,2 +1,11 @@
 .ArticlesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  width: 70vw;
 }

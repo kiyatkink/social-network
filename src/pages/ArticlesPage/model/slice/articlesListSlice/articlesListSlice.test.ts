@@ -1,8 +1,8 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { ArticleMock, ArticlesView } from 'entities/Article';
-import { ArticlesListSchema } from '../types/ArticlesListSchema';
+import { ArticlesListSchema } from '../../types/ArticlesListSchema';
 import { articlesListActions, articlesListReducer } from './articlesListSlice';
-import { fetchArticles } from '../services/fetchArticles/fetchArticles';
+import { fetchArticles } from '../../services/fetchArticles/fetchArticles';
 
 const initialStore: ArticlesListSchema = {
   isLoading: false,
@@ -54,6 +54,7 @@ describe('articlesListSlice tests', () => {
             fetchArticles.fulfilled([ArticleMock], ''),
     )).toEqual({
       ...initialStore,
+      page: 2,
       ids: [ArticleMock.id],
       entities: {
         [ArticleMock.id]: ArticleMock,

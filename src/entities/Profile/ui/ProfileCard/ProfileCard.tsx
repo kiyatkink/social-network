@@ -83,7 +83,7 @@ export const ProfileCard: FC<ProfileCardProps> = memo((props: ProfileCardProps) 
         onChange={changeAge}
         readOnly={readonly}
         size={AppInputSize.L}
-        value={form?.age}
+        value={`${form?.age}`}
         placeholder={t('Возраст')}
       />
       <CountrySelect

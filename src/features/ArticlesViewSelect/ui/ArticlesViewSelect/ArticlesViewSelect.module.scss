@@ -1,10 +1,8 @@
 .ArticlesViewSelect {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
 }
 
 .selected {
-  fill: #F00;
+  fill: var(--inverted-secondary-color);
 }

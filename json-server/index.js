@@ -34,6 +34,79 @@ function addAuthorToArticle (article, profiles) {
   return null
 }
 
+function dateToNumber (stringDate) {
+  let [day, month, year] = stringDate.split('.')
+  const date = new Date(`${year}-${month}-${day}`)
+  return date.getTime()
+}
+
+const articlesOrderType = {
+  'ask': (_sort, array) => {
+    if (_sort === 'date') {
+      array = array.sort((a, b) => {
+        return dateToNumber(a.createdAt) - dateToNumber(b.createdAt)
+      })
+    }
+    if (_sort === 'views') {
+      array = array.sort((a, b) => {
+        return a.views - b.views
+      })
+    }
+    return array
+  },
+  'desk': (_sort, array) => {
+    if (_sort === 'createdAt') {
+      array = array.sort((a, b) => {
+        return dateToNumber(b.createdAt) - dateToNumber(a.createdAt)
+      })
+    }
+    if (_sort === 'views') {
+      array = array.sort((a, b) => {
+        return b.views - a.views
+      })
+    }
+    return array
+  }
+}
+
+function checkWordInArticle (array, _search) {
+  array = array.filter((article) => {
+    for (let key in article) {
+      if (key === 'views' || key === 'type') {
+        continue
+      }
+
+      if (key === 'blocks') {
+        for (let articleBlocksKey in article.blocks) {
+          if (articleBlocksKey === 'paragraphs') {
+            for (let paragraph of article.blocks[articleBlocksKey]) {
+              if (paragraph.toString().toLowerCase().includes(_search.toLowerCase())) {
+                return true
+              }
+            }
+          }
+          if (article.blocks[articleBlocksKey].toString().toLowerCase().includes(_search.toLowerCase())) {
+              return true
+          }
+        }
+      }
+
+      if (article[key].toString().toLowerCase().includes(_search.toLowerCase())) {
+        return true
+      }
+    }
+    return false
+  })
+
+  return array
+}
+
+function filterTypeArticles (array, _type) {
+  return array.filter((article) => {
+    return article.type.includes(_type)
+  })
+}
+
 
 
 // Эндпоинт для логина
@@ -98,16 +171,30 @@ server.get('/articles/:id', (req, res) => {
 
 // Эндпоинт для получения всех статей
 server.get('/articles', (req, res) => {
-  const { _page, _limit } = req.query
+  const { _page, _limit, _sort, _order, _search, _type } = req.query
 
   try {
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
 
     const { articles = [], profiles = [] } = db;
 
-    const result = articles.map((article) => addAuthorToArticle(article, profiles)).filter(Boolean);
+    let result = articles.map((article) => addAuthorToArticle(article, profiles)).filter(Boolean);
+
+    if (_sort && _order) {
+      result = articlesOrderType[_order ](_sort, result)
+    }
+
 
     if (result) {
+      if (_sort && _order) {
+        result = articlesOrderType[_order ](_sort, result)
+      }
+      if (_search) {
+        result = checkWordInArticle(result, _search)
+      }
+      if (_type) {
+        result = filterTypeArticles(result, _type)
+      }
       if (_page && _limit) {
         const begin = (_page - 1) * _limit
         const end = _page * _limit
